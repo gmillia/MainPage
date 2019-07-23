@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="SignInModel.css">
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  color: #777;
+}
+
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  position: relative;
+  opacity: 0.65;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bgimg-1 {
+    display: flex;
+  background-image: url("img1.jpeg");
+  min-height: 100%;
+  margin: auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.bgimg-2 {
+  background-image: url("dash.png");
+  min-height: 400px;
+}
+
+.bgimg-3 {
+  background-image: url("stats.PNG");
+  min-height: 400px;
+}
+
+.caption {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+
+.caption .signInBtn {
+  background-color: #111;
+  color: #fff;
+  padding: 18px;
+  font-size: 25px;
+  letter-spacing: 10px;
+}
+
+h3 {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font: 20px "Lato", sans-serif;
+  color: #111;
+}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1024px) {
+  .bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: scroll;
+  }
+}
+
+.signInBtn
+{
+    text-decoration: none;
+}
+
+.signInModel
+{
+    display: none;
+    position: absolute !important;
+    z-index: 1;
+    padding-top: 4%;
+    width: 100%;
+    height: 90%;
+    /*
+    background-color: rgb(0,0,0);
+    background-color:rgba(0,0,0,0.4);*/
+}
+
+.after_modal_append
+{
+    position: relative;
+}
+
+.signInModelContent
+{
+    background: #fefefe;
+    width: 90%;
+    height: 90%;
+    margin: auto;
+
+}
+
+.container
+{
+    display: none;
+}
+</style>
+</head>
+<body>
+
+<div class="bgimg-1">
+  <div class="caption">
+    <a class="signInBtn" href="#">SIGN IN</span>
+  </div>
+  <div id="modalRoot">
+  <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form id="signUpForm">
+                <h1>Create Account</h1>
+
+
+                <input id="signUpName" type="text" placeholder="Name" />
+                <input id="signUpEmail" type="email" placeholder="Email" required/>
+                <input id="signUpPsw" type="password" placeholder="Password" required/>
+                <button id="signUpBtn">Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form id="signInForm">
+                <h1>Sign in</h1>
+                <!--
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your account</span>
+                -->
+                <input id="signInEmail" type="email" placeholder="Email" required/>
+                <input id ="signInPsw" type="password" placeholder="Password" required/>
+                <a href="#">Forgot your password?</a>
+                <button id="signInBtnModal">Sign In</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
+  <h3 style="text-align:center;">ABOUT</h3>
+  <p>
+      Most stats keeping software is very robust and hard to use for a regular team. This website was created with the 
+      idea of simplicity: simple statistical input and somewhat complex statistical output. Of course, there are many 
+      imporvements to be made to this first and simple version, but all essential are already here! Possession, passes,
+      shots, and much more. If you have any suggestions or ideas - feel free to contact me! 
+  </p>
+</div>
+
+<div class="bgimg-2">
+  <div class="caption">
+  <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;"></span>
+  </div>
+</div>
+
+<div style="position:relative;">
+  <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+    <p>
+        Easy to use dashboard that enables you to input statistics for both teams, that instantly transfers intormation
+        to statistical menu, in which you can easily track game stats. 
+    </p>
+  </div>
+</div>
+
+<div class="bgimg-3">
+  <div class="caption">
+  <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;"></span>
+  </div>
+</div>
+
+<div style="position:relative;">
+  <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+  
+  </div>
+</div>
+
+<!--
+<div class="bgimg-1">
+  <div class="caption">
+  <span class="border">COOL!</span>
+  </div>
+</div>
+-->
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/6.3.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#reserved-urls -->
+
+       <!-- Add Firebase products that you want to use -->
+  <script src="/__/firebase/6.3.1/firebase-auth.js"></script>
+  <script src="/__/firebase/6.3.1/firebase-firestore.js"></script>
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+
+
+    $(document).ready(function()
+    {
+
+      var firebaseConfig = {
+      apiKey: "api-key",
+      authDomain: "project-id.firebaseapp.com",
+      databaseURL: "https://project-id.firebaseio.com",
+      projectId: "project-id",
+      storageBucket: "project-id.appspot.com",
+      messagingSenderId: "sender-id",
+      appID: "app-id",
+      };
+
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+
+
+      //whenever auth status changes
+      auth.onAuthStateChanged(user =>
+      {
+        //case 1: user exists -> logged in
+        if(user)
+        {
+          console.log("logged in");
+          window.location = '/red.html';
+
+        }
+        else
+        {
+          console.log("logged out");
+        }
+      });
+      //db.settings({ timestampsInSnapshots: true});
+
+        $(".signInBtn").click(function()
+        {
+            $(".container").fadeIn(500);
+            $(".container").addClass("vis");
+            //console.log(auth);
+            //console.log(db);
+
+        });
+
+        $(window).click(function(evt)
+        {
+            //console.log(evt.target.className);
+            if($(".container").hasClass("vis") && (evt.target.className) == ("bgimg-1"))
+            {
+                $(".container").fadeOut(500);
+            }
+        }); 
+        
+        $("#signInBtnModal").click(function(e)
+        {
+          //console.log($("#signInEmail")[0].value);
+          //console.log($("#signInPsw")[0].value);
+
+          e.preventDefault();
+
+          var email = $("#signInEmail")[0].value;
+          var pswd = $("#signInPsw")[0].value;
+
+          auth.signInWithEmailAndPassword(email, pswd).then(cred =>
+          {
+            $(".container").fadeOut(500);
+            $("#signInForm")[0].reset();
+          });
+        });
+
+        $("#signUpBtn").click(function(e)
+        {
+          //console.log($("#signUpEmail")[0].value);
+          //console.log($("#signUpPsw")[0].value);
+          e.preventDefault();
+
+          var name = $("#signUpName")[0].value;
+          var email = $("#signUpEmail")[0].value;
+          var pswd = $("#signUpPsw")[0].value;
+
+          //console.log(email);
+
+          auth.createUserWithEmailAndPassword(email, pswd).then(cred =>
+          {
+            console.log(cred.user);
+            $(".container").fadeOut(500);
+            $("#signUpForm")[0].reset();
+          });
+        });
+    });
+    
+</script>
+
+<script src="SignInModel.js"></script>
+
+</html>
