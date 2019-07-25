@@ -3,7 +3,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" type="text/css" href="SignInModel.css">
+<link rel="stylesheet" type="text/css" href="Home/SignInModel.css">
 <style>
 body, html {
   height: 100%;
@@ -23,7 +23,7 @@ body, html {
 
 .bgimg-1 {
     display: flex;
-  background-image: url("img1.jpeg");
+  background-image: url("Home/img1.jpeg");
   min-height: 100%;
   margin: auto;
   text-align: center;
@@ -32,12 +32,12 @@ body, html {
 }
 
 .bgimg-2 {
-  background-image: url("dash.png");
+  background-image: url("Home/dash.png");
   min-height: 400px;
 }
 
 .bgimg-3 {
-  background-image: url("stats.PNG");
+  background-image: url("Home/stats.PNG");
   min-height: 400px;
 }
 
@@ -201,124 +201,21 @@ h3 {
   </div>
 </div>
 
-<!--
-<div class="bgimg-1">
-  <div class="caption">
-  <span class="border">COOL!</span>
-  </div>
-</div>
--->
 
-<!-- The core Firebase JS SDK is always required and must be listed first -->
+<!--The core Firebase JS SDK is always required and must be listed first-->
 <script src="/__/firebase/6.3.1/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#reserved-urls -->
+<!--Add Firebase products that you want to use-->
+<script src="/__/firebase/6.3.1/firebase-auth.js"></script>
+<script src="/__/firebase/6.3.1/firebase-firestore.js"></script>
 
-       <!-- Add Firebase products that you want to use -->
-  <script src="/__/firebase/6.3.1/firebase-auth.js"></script>
-  <script src="/__/firebase/6.3.1/firebase-firestore.js"></script>
-
-<!-- Initialize Firebase -->
+<!--Initialize Firebase-->
 <script src="/__/firebase/init.js"></script>
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script>
 
-
-    $(document).ready(function()
-    {
-
-      var firebaseConfig = {
-      apiKey: "api-key",
-      authDomain: "project-id.firebaseapp.com",
-      databaseURL: "https://project-id.firebaseio.com",
-      projectId: "project-id",
-      storageBucket: "project-id.appspot.com",
-      messagingSenderId: "sender-id",
-      appID: "app-id",
-      };
-
-      const auth = firebase.auth();
-      const db = firebase.firestore();
-
-
-      //whenever auth status changes
-      auth.onAuthStateChanged(user =>
-      {
-        //case 1: user exists -> logged in
-        if(user)
-        {
-          console.log("logged in");
-          window.location = '/red.html';
-
-        }
-        else
-        {
-          console.log("logged out");
-        }
-      });
-      //db.settings({ timestampsInSnapshots: true});
-
-        $(".signInBtn").click(function()
-        {
-            $(".container").fadeIn(500);
-            $(".container").addClass("vis");
-            //console.log(auth);
-            //console.log(db);
-
-        });
-
-        $(window).click(function(evt)
-        {
-            //console.log(evt.target.className);
-            if($(".container").hasClass("vis") && (evt.target.className) == ("bgimg-1"))
-            {
-                $(".container").fadeOut(500);
-            }
-        }); 
-        
-        $("#signInBtnModal").click(function(e)
-        {
-          //console.log($("#signInEmail")[0].value);
-          //console.log($("#signInPsw")[0].value);
-
-          e.preventDefault();
-
-          var email = $("#signInEmail")[0].value;
-          var pswd = $("#signInPsw")[0].value;
-
-          auth.signInWithEmailAndPassword(email, pswd).then(cred =>
-          {
-            $(".container").fadeOut(500);
-            $("#signInForm")[0].reset();
-          });
-        });
-
-        $("#signUpBtn").click(function(e)
-        {
-          //console.log($("#signUpEmail")[0].value);
-          //console.log($("#signUpPsw")[0].value);
-          e.preventDefault();
-
-          var name = $("#signUpName")[0].value;
-          var email = $("#signUpEmail")[0].value;
-          var pswd = $("#signUpPsw")[0].value;
-
-          //console.log(email);
-
-          auth.createUserWithEmailAndPassword(email, pswd).then(cred =>
-          {
-            console.log(cred.user);
-            $(".container").fadeOut(500);
-            $("#signUpForm")[0].reset();
-          });
-        });
-    });
-    
-</script>
-
-<script src="SignInModel.js"></script>
+<script src="Home/SignInModel.js"></script>
+<script src="Home/auth.js"></script>
 
 </html>

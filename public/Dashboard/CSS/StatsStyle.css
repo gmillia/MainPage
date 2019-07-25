@@ -1,0 +1,93 @@
+.ball-poss-placeholder, .goal-attempts-placeholder, .shots-on-placeholder, .shots-off-placeholder, .block-shot-placeholder, .corners-placeholder,
+.off-placeholder, .gk-save-placeholder, .foul-comm-placeholder, .foul-rec-placeholder, .pass-compl-placeholder, .pass-inc-placeholder,
+.pass-tot-placeholder, .throws-placeholder
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 10%;
+    width: 100%;
+    text-align: center; 
+}
+
+.ball-poss, .goal-attempts, .shots-on, .shots-off, .block-shot, .corners, .off, .gk-save, .foul-comm, .foul-rec, .pass-compl, .pass-inc,
+.pass-tot, .throws
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    width: 95%;
+    text-align: center;
+    font-size: 14px;
+}
+
+.ball-poss-stats, .goal-attempts-stats, .shots-on-stats, .shots-off-stats, .block-shot-stats, .corners-stats, .off-stats, .gk-save-stats, 
+.foul-comm-stats, .foul-rec-stats, .pass-compl-stats, .pass-inc-stats, .pass-tot-stats, .throws-stats
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 30%;
+    width: 95%;
+}
+
+.t1-ball-poss, .t2-ball-poss, .t1-goal-att, .t2-goal-att, .t1-shots-on, .t2-shots-on, .t1-shots-off, .t2-shots-off, .t1-block-shot, 
+.t2-block-shot, .t1-corners, .t2-corners, .t1-off, .t2-off, .t1-gk-save, .t2-gk-save, .t1-foul-comm, .t2-foul-comm, .t1-foul-rec,
+.t2-foul-rec, .t1-pass-compl, .t2-pass-compl, .t1-pass-inc, .t2-pass-inc, .t1-pass-tot, .t2-pass-tot, .t1-throws, .t2-throws
+{
+    -webkit-box-flex: auto;
+    position: relative;
+    display: block;
+    width: 90%;
+    height: 100%;
+    background-color: rgb(226, 223, 223);
+}
+
+.t1-ball-poss-bar, .t2-ball-poss-bar, .t1-goal-att-bar, .t2-goal-att-bar, .t1-shots-on-bar, .t2-shots-on-bar, .t1-shots-off-bar, 
+.t2-shots-off-bar,.t1-block-shot-bar, .t2-block-shot-bar, .t1-corners-bar, .t2-corners-bar, .t1-off-bar, .t2-off-bar, .t1-gk-save-bar, 
+.t2-gk-save-bar, .t1-foul-comm-bar, .t2-foul-comm-bar, .t1-foul-rec-bar, .t2-foul-rec-bar, .t1-pass-compl-bar, .t2-pass-compl-bar,
+.t1-pass-inc-bar, .t2-pass-inc-bar, .t1-pass-tot-bar, .t2-pass-tot-bar, .t1-throws-bar, .t2-throws-bar
+{
+    height: 100%;
+    width: 0%;
+    background-color: rgb(255, 0, 0);
+}
+
+.t1-ball-poss-bar, .t1-goal-att-bar, .t1-shots-on-bar, .t1-shots-off-bar, .t1-block-shot-bar, .t1-corners-bar, .t1-off-bar, .t1-gk-save-bar,
+.t1-foul-comm-bar, .t1-foul-rec-bar, .t1-pass-compl-bar, .t1-pass-inc-bar, .t1-pass-tot-bar, .t1-throws-bar
+{
+    align-content: right;
+    justify-content: right;
+    float: right;
+    width: 0%;
+    background-color: rgb(0, 128, 0);
+}
+.t1-ball-poss-num, .t1-goal-att-num, .t1-shots-on-num, .t1-shots-off-num, .t1-block-shot-num, .t1-corners-num, .t1-off-num, .t1-gk-save-num,
+.t1-foul-comm-num, .t1-foul-rec-num, .t1-pass-compl-num, .t1-pass-inc-num, .t1-pass-tot-num, .t1-throws-num
+{
+    width: 100%;
+    text-align: left;
+}
+
+.t2-ball-poss-num, .t2-goal-att-num, .t2-shots-on-num, .t2-shots-off-num, .t2-block-shot-num, .t2-corners-num, .t2-off-num, .t2-gk-save-num,
+.t2-foul-comm-num, .t2-foul-rec-num, .t2-pass-compl-num, .t2-pass-inc-num, .t2-pass-tot-num, .t2-throws-num
+{
+    width: 100%;
+    text-align: right;
+}
+
+.ball-poss-name, .goal-att-name, .shots-on-name, .shots-off-name, .block-shot-name, .corners-name, .off-name, .gk-save-name, .foul-comm-name,
+.foul-rec-name, .pass-compl-name, .pass-inc-name, .pass-tot-name, .throws-name
+{
+    width: 100%;
+    text-align: center;
+}
+
+.stats-break
+{
+    width: 5px;
+}

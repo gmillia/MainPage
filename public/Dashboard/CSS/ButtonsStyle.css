@@ -1,0 +1,52 @@
+.match-btn, .about-btn, .help-btn, .contact-btn, .dashboard-btn
+{
+    width: 80px;
+    height: 60%;
+    outline: none;
+    cursor: pointer;
+    background: grey;
+    transition: 0.5s;
+    font-size: 12px;
+    border-radius: 2px;
+    font-family: "Lato", sans-serif;
+    border: 1px solid grey;
+    color: white;
+}
+
+.match-btn:hover, .about-btn:hover, .help-btn:hover, .contact-btn:hover, .dashboard-btn:hover
+{
+    border: none;
+    color: black;
+    font-size: 14px;
+    transform: scale(1.009); 
+}
+
+.match-btn:hover, .about-btn:hover, .help-btn:hover, .contact-btn:hover, .dashboard-btn:hover
+{
+    background-color: lightgrey;
+    transition: all 0.3s ease-in-out;
+}
+
+.match-btn:active
+{
+    width: 80px;
+    height: 60%;
+    outline: none;
+    cursor: pointer;
+    background: grey;
+    transition: 0.5s;
+    font-size: 12px;
+    border-radius: 2px;
+    font-family: "Lato", sans-serif;
+    border: 1px solid grey;
+    color: white;
+}
+
+.match-btn:focus
+{
+    background: skyblue;
+    color: black;
+}
+
+
+
