@@ -8,6 +8,31 @@
     justify-content: center;
 }
 
+#container
+{
+    width: 50%;
+    height: 50%;
+    background: red;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    text-align: center;
+}
+
+#btns
+{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+}
+
+input[type=text]
+{
+    text-align: center;
+}
+
 .t1-dashboard, .t2-dashboard
 {
     display: flex;

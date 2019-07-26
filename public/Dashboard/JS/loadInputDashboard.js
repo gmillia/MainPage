@@ -150,6 +150,42 @@ $(document).on('click', '.goal', function()
     currTeam.goals += 1;
 
     addEffect($(this)[0]);
+
+    $('.dashboard').fadeOut(500, function()
+    {
+        $(".container").fadeIn(400);
+    })
+    
+});
+
+/*
+Helper function that saves goal scorer info
+*/
+$(document).on('click', '#save', function()
+{
+    timer.stop();  //stop the timer
+    var currTeam = getTeam($(this));
+
+    //Put values into team info
+    var scorer = $("#scorer")[0].value;
+    var assist = $("#assist")[0].value;
+    currTeam.scorers.push(scorer);
+    currTeam.assists.push(assist);
+    currTeam.minutesGoal.push(timer.minutes);
+    currTeam.secondsGoal.push(timer.seconds);
+
+    $('.container').fadeOut(500, function()
+    {
+        $(".dashboard").fadeIn(400);
+    }) 
+});
+
+$(document).on('click', '#cancel', function()
+{
+    $('.container').fadeOut(500, function()
+    {
+        $(".dashboard").fadeIn(400);
+    }) 
 });
 
 /*

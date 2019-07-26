@@ -36,9 +36,6 @@ $(document).ready(function()
     {
         $(".container").fadeIn(500);
         $(".container").addClass("vis");
-        //console.log(auth);
-        //console.log(db);
-
     });
 
     $(window).click(function(evt)
@@ -52,9 +49,6 @@ $(document).ready(function()
     
     $("#signInBtnModal").click(function(e)
     {
-        //console.log($("#signInEmail")[0].value);
-        //console.log($("#signInPsw")[0].value);
-
         e.preventDefault();
 
         var email = $("#signInEmail")[0].value;
@@ -62,15 +56,13 @@ $(document).ready(function()
 
         auth.signInWithEmailAndPassword(email, pswd).then(cred =>
         {
-        $(".container").fadeOut(500);
-        $("#signInForm")[0].reset();
+            $(".container").fadeOut(500);
+            $("#signInForm")[0].reset();
         });
     });
 
     $("#signUpBtn").click(function(e)
     {
-        //console.log($("#signUpEmail")[0].value);
-        //console.log($("#signUpPsw")[0].value);
         e.preventDefault();
 
         var name = $("#signUpName")[0].value;
@@ -81,9 +73,8 @@ $(document).ready(function()
 
         auth.createUserWithEmailAndPassword(email, pswd).then(cred =>
         {
-        console.log(cred.user);
-        $(".container").fadeOut(500);
-        $("#signUpForm")[0].reset();
+            $(".container").fadeOut(500);
+            $("#signUpForm")[0].reset();
         });
     });
 });
