@@ -42,4 +42,37 @@ $(document).ready(function()
     {
         firebase.auth().signOut();
     });
+
+    $("#showSaved").click(function()
+    {
+        //console.log("Click");
+        const db = firebase.firestore();
+
+        var gameRef = db.collection("Games");
+    
+        var qr = gameRef.where("uid", "==", firebase.auth().currentUser.uid);
+    
+        //console.log(qr);
+    
+        //Gets all user docs
+        qr.get().then(function(docs)
+        {
+            docs.forEach(function(doc)
+            {
+                //console.log(doc.id);
+                var element = document.createElement("input");
+                element.type = "button";
+                element.value = doc.id;
+
+                $(".loadContent").append(element);
+            });
+        })
+
+        .then(function()
+        {
+            $(".loadContent").show()
+        });
+
+        console.log("done");
+    });
 });
