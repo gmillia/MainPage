@@ -1,0 +1,27 @@
+<style>
+    #saveName[type=text]
+    {
+        text-align:center;
+        border: 1px solid black;
+    }
+
+    #saveContainer
+    {
+        height: 100%;
+        width: 100%;
+        background: red;
+        text-align: center;
+    }
+</style>
+
+<div id="saveContainer" class="saveContainer">
+    <h1>Save as:</h1>
+    <input type="text" id="saveName" placeholder="Filename" required>
+
+    <div style="height:20px"></div>
+
+    <div id="btns">
+        <button type="button" id="saveData">Save</button>
+        <button type="button" id="loadData">Load</button>
+    </div>
+</div>

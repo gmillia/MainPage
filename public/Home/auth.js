@@ -30,7 +30,6 @@ $(document).ready(function()
         console.log("logged out");
     }
     });
-    //db.settings({ timestampsInSnapshots: true});
 
     $(".signInBtn").click(function()
     {
@@ -40,7 +39,6 @@ $(document).ready(function()
 
     $(window).click(function(evt)
     {
-        //console.log(evt.target.className);
         if($(".container").hasClass("vis") && (evt.target.className) == ("bgimg-1"))
         {
             $(".container").fadeOut(500);

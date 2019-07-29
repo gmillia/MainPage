@@ -50,22 +50,4 @@ $("header").on('click', 'button', function(){
     $(this).addClass('selected');
 });
 
-$(document).on('click', '.saveBtn', function()
-{
-    const db = firebase.firestore();
-    var homeTeam = $(".t1-name-input")[0].value;
-    var awayTeam = $(".t2-name-input")[0].value;
 
-    if(homeTeam == "") homeTeam = "Home Team";
-    if(awayTeam == "") awayTeam = "Away Team";
-    
-    var data =
-    {
-        t1: homeTeam,
-        t2: awayTeam
-    }
-
-    console.log(firebase.auth().currentUser.uid);
-    db.collection("Games").doc(firebase.auth().currentUser.uid).collection("gms").doc('test').set(data);
-    //db.collection("Games").doc(firebase.auth().currentUser.uid).collection("games").set(data);
-});
