@@ -57,12 +57,19 @@ $(document).ready(function()
         //Gets all user docs
         qr.get().then(function(docs)
         {
+            //Create buttons to load saved
             docs.forEach(function(doc)
             {
                 //console.log(doc.id);
                 var element = document.createElement("input");
                 element.type = "button";
                 element.value = doc.id;
+                element.onclick = function()
+                { 
+                    //console.log(element.value); 
+                    var queryString = "?load=" + element.value;
+                    window.location.href = "../Dashboard" + queryString;
+                };
 
                 $(".loadContent").append(element);
             });
@@ -73,6 +80,6 @@ $(document).ready(function()
             $(".loadContent").show()
         });
 
-        console.log("done");
+        console.log("Done");
     });
 });

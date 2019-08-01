@@ -1,3 +1,12 @@
+/*
+Illia Shershun
+
+File controls behavior of te Save subpage
+*/
+
+/*
+Function that controls behavior on the Save button click: opens Save submenu
+*/
 $(document).on('click', '.saveBtn', function()
 {
     if(!document.querySelector(".saveContainer"))
@@ -7,101 +16,37 @@ $(document).on('click', '.saveBtn', function()
     }
 });
 
+/*
+Helper function that controls behavior when Save button is clicked in the Save-submenu (when user wants to save data)
+
+TODO: alert user if file already exists uder certain name + limit number of charactes for filename
+*/
 $(document).on('click', '#saveData', function()
 {
-    console.log("Save");
+    //console.log("Save");
     const db = firebase.firestore();
+
+    //Grab the names of the teams
     var homeTeam = $(".t1-name-input")[0].value;
     var awayTeam = $(".t2-name-input")[0].value;
 
+    //If empty save as home/away team for names
     if(homeTeam == "") homeTeam = "Home Team";
     if(awayTeam == "") awayTeam = "Away Team";
 
-    var data =
+    //Data to be saved is user id (for matching and making sure access is grandted only to auth users) and teams info
+    var data = 
     {
         uid: firebase.auth().currentUser.uid,
-        t1Name: homeTeam,
-        t2Name: awayTeam,
-        t1Possession: T1.possession,
-        t2Possession: T2.possession,
-        t1totalShots: T1.totalShots,
-        t2totalShots: T2.totalShots,
-        t1ShotsOnGoal: T1.shotsOnGoal,
-        t2ShotsOnGoal: T2.shotsOnGoal,
-        t1ShotsOffGoal: T1.shotsOffGoal,
-        t2ShotsOffGoal: T2.shotsOffGoal,
-        t1BlockedShots: T1.blockedShots,
-        t2BlockedShots: T2.blockedShots,
-        t1Corners: T1.corners,
-        t2Corners: T2.corners,
-        t1Offsides: T1.offsides,
-        t2Offsides: T2.offsides,
-        t1GKSaves: T1.GKSaves,
-        t2GKSaves: T2.GKSaves,
-        t1FoulsComm: T1.foulsBy,
-        t2FouldComm: T2.foulsBy,
-        t1FoulsRec: T1.foulsOn,
-        t2FouldRec: T2.foulsOn,
-        t1ComplPass: T1.completedPasses,
-        t2ComplPass: T2.completedPasses,
-        t1IncPass: T1.incompletePasses,
-        t2IncPass: T2.incompletePasses,
-        t1TotalPass: T1.totalPasses,
-        t2TotalPass: T2.totalPasses,
-        t1Throws: T1.throwIns,
-        t2Throws: T2.throwIns,
-        t1Goals: T1.goals,
-        t2Goals: T2.goals,
-        t1Scorers: T1.scorers,
-        t2Scorers: T2.scorers,
-        t1Assists: T1.assists,
-        t2Assists: T2.assists,
-        t1MinutesGoal: T1.minutesGoal,
-        t2MinutesGoal: T2.minutesGoal,
-        t1SecsGoal: T1.secondsGoal,
-        t2SecsGoal: T2.secondsGoal
+        t1: T1,
+        t2: T2
     }
 
+    //Grab the desired save file name, save as Temporary is name is empty
     var filename = $("#saveName")[0].value;
     if(filename == "") filename = "Temporary";
 
-    console.log(filename);
-    db.collection("Games").doc(filename).set(data);
-    console.log("Done");
-
+    //Save data in the Games collection with the desired filename
+    db.collection("Games").doc(filename).set(JSON.parse(JSON.stringify(data)));
 });
 
-$(document).on('click', '#loadData', function()
-{
-    const db = firebase.firestore();
-
-    var gameRef = db.collection("Games");
-
-    /*
-    gameRef.get().then(function(doc)
-    {
-        if(doc.exists) console.log("Exists");
-        else console.log("Not");
-    });
-    */
-
-    var qr = gameRef.where("uid", "==", firebase.auth().currentUser.uid);
-
-    //console.log(qr);
-
-    //Gets all user docs
-    qr.get().then(function(docs)
-    {
-        docs.forEach(function(doc)
-        {
-            console.log(doc.id);
-        });
-    });
-
-    /*.catch(function(error)
-    {
-        console.log("Error");
-    });
-    */
-    
-});

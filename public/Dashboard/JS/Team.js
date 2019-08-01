@@ -37,4 +37,16 @@ class Team
 		this.minutesGoal = [];
 		this.secondsGoal = [];
 	}
+
+	/*Helper function that gets called when we load data and need to reset initial values to
+	loaded values [20]
+	loadFromSaved(assists, blockedShots, complPass, corners, foulsComm, foulsRec, gkSaves, goals,
+				  incPass, minsGoal, name, offsides, possession, scorers, secsGoal, shotsOff, shotsOn,
+				  throws, totalPass, totalShots)
+	*/
+	loadFromSaved(savedList)
+	{
+		//this.assists = savedList[0];
+		this.blockedShots = savedList[3];
+	}
 }

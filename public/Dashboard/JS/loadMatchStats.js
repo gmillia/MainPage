@@ -5,18 +5,29 @@ var yellow = "rgb(255, 255, 0)";
 /*
 Function that initially loads the stats (to display in the begining)
 */
-$(document).ready(function()
+$(".Content").ready(function()
 {
-    $(".Content").load("HTML/matchStats.html");
+    /*
+    $(".Content").load("HTML/matchStats.html", function()
+    {
+        $('link[rel=stylesheet][href~="CSS/inputDashboard.css"]').attr('disabled', 'true');
+        
+        updateStats();
+    });
+    */
 
-    $('link[rel=stylesheet][href~="CSS/inputDashboard.css"]').attr('disabled', 'true');
+    //$('link[rel=stylesheet][href~="CSS/inputDashboard.css"]').attr('disabled', 'true');
+    //$(".matchBtn").click();
 });
 
 /*
 Function that gets called when the match button is clicked to display Match stats
+Initially is called in loadHeader to display match stats initially
 */
 $(document).on('click', '.matchBtn', function() 
 { 
+    //console.trace();
+    //console.log(arguments.callee.caller);
     //We are not in the stats submenu -> need to load it
     if(!document.querySelector(".ball-poss-placeholder"))
     {
