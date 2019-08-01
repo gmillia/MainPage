@@ -24,14 +24,17 @@ Gets called from auth.js
 */
 function loadPage()
 {
-    $("header").load("HTML/header.html", function()
+    $(document).ready(function()
     {
-        //Make sure Match button is selected initially 
-        var loaded = document.querySelector('.matchBtn');
+        $("header").load("HTML/header.html", function()
+        {
+            //Make sure Match button is selected initially 
+            var loaded = document.querySelector('.matchBtn');
 
-        if(loaded)
-            $(".matchBtn").click();
-    });   
+            if(loaded)
+                $(".matchBtn").click();
+        }).fadeIn("slow");
+    });  
 }
 
 /*

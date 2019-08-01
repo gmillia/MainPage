@@ -82,4 +82,20 @@ $(document).ready(function()
 
         console.log("Done");
     });
+
+    $("#test").click(function()
+    {
+        console.log(27);
+        /*
+        var data = 
+        {
+            type: "Regular"
+        };
+        const db = firebase.firestore();
+        const auth = firebase.auth();
+        db.collection("Users").doc(auth.currentUser.uid).set(data);
+
+        console.log(db.collection("Users"));
+        */
+    });
 });
