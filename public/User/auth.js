@@ -1,5 +1,4 @@
-
-$(document).ready(function()
+window.onload = function()
 {
     firebase.auth().onAuthStateChanged(user =>
     {
@@ -7,7 +6,8 @@ $(document).ready(function()
         //Case 1: User is logged in
         if(user)
         {
-            console.log("Logged in" + firebase.auth().currentUser);
+            console.log("Logged in");
+            toDisplay();
 
             //Set session timeout, so the user is logged out automatically after some time
             user.getIdTokenResult().then((idTokenResult)=>
@@ -21,7 +21,7 @@ $(document).ready(function()
         //Case 2: user is logged out
         else
         {
-            console.log("Logged out" + firebase.auth().currentUser);
+            console.log("Logged out");
 
             sessionTimeout && clearTimeout(sessionTimeout);
             sessionTimeout = null;
@@ -31,71 +31,109 @@ $(document).ready(function()
             console.log(window.location);
         }
     });
+}
 
-    $('#newGame').click(function()
+$(document).on('click', '#newGame', function()
+{
+    window.location.href = "../Dashboard";
+});
+
+//Sign user out when sign out button is clicked
+$(document).on('click', '#signOut', function()
+{
+    firebase.auth().signOut();
+});
+
+/*
+PURPOSE: Helper function that decides what to display based on the user auth type
+INVOKED: in onAuthChange function, when user is logged in 
+
+IN-TEST: Currently testing loading options for users who have Premium account
+*/
+function toDisplay()
+{
+    var loadedSaved = false;
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    //Check the user type, if user has certain type-> display special options for him
+    db.collection("Users").doc(auth.currentUser.uid).get().then(function(doc)
     {
-        window.location.href = "../Dashboard";
+        var userType = doc.data().type;
+
+        if(userType == "Premium")
+        {
+            console.log("Premium");
+
+            var element = document.createElement("input");
+            element.type = "button";
+            element.value = "Load"
+            element.onclick = function()
+            { 
+                createLoadButtons(loadedSaved);
+                loadedSaved = true;
+            };
+
+            $("body").append(element);
+        }
+
+        document.getElementsByTagName("html")[0].style.visibility = "visible";
     });
+}
 
-    //Sign user out when sign out button is clicked
-    $("#signOut").click(function()
+/*
+PURPOSE: Helper function that creates load buttons displayed in the loadModal when Load button is clicked
+INVOKED: Load button click
+*/
+function createLoadButtons(loadedSaved)
+{
+    //Check if already loaded docs
+    if(!loadedSaved)
     {
-        firebase.auth().signOut();
-    });
-
-    $("#showSaved").click(function()
-    {
-        //console.log("Click");
-        const db = firebase.firestore();
-
+        var db = firebase.firestore();
         var gameRef = db.collection("Games");
-    
         var qr = gameRef.where("uid", "==", firebase.auth().currentUser.uid);
-    
-        //console.log(qr);
-    
-        //Gets all user docs
+
+        //For each document on the queried list create button
         qr.get().then(function(docs)
         {
-            //Create buttons to load saved
+            //Create buttons to load saved match
             docs.forEach(function(doc)
             {
-                //console.log(doc.id);
                 var element = document.createElement("input");
                 element.type = "button";
-                element.value = doc.id;
+                element.value = doc.id;  //button name = saved filename
+                element.className = "loadBtns";
+
+                //Once the button is clicked, open dashboard with the loaded data
                 element.onclick = function()
                 { 
-                    //console.log(element.value); 
                     var queryString = "?load=" + element.value;
                     window.location.href = "../Dashboard" + queryString;
                 };
 
+                //Add created buttons to the loadedModal
                 $(".loadContent").append(element);
             });
-        })
-
-        .then(function()
+        }).then(function()
         {
-            $(".loadContent").show()
+            //Once buttons are created -> show modal
+            $("#loadModal").show();
         });
+    }
+    //If already created buttons -> just show the loadedModal
+    else $("#loadModal").show();
+}
 
-        console.log("Done");
-    });
-
-    $("#test").click(function()
+/*
+Function responsible to closing the loadModal 
+TODO: Change to it closes the menu modal as well (once its done)
+*/
+window.onclick = function(evt)
+{
+    var modal = document.getElementById("loadModal");
+    if(evt.target == modal)
     {
-        console.log(27);
-        /*
-        var data = 
-        {
-            type: "Regular"
-        };
-        const db = firebase.firestore();
-        const auth = firebase.auth();
-        db.collection("Users").doc(auth.currentUser.uid).set(data);
-
-        console.log(db.collection("Users"));
-        */
-    });
-});
+        modal.style.display = 'none';
+    }
+}

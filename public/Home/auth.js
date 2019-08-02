@@ -59,9 +59,9 @@ $(document).ready(function()
         {
             $(".container").fadeOut(500);
             $("#signInForm")[0].reset();
+            window.location = 'User/';
         });
 
-        window.location = 'User/';
     });
 
     $("#signUpBtn").click(function(e)
@@ -74,13 +74,14 @@ $(document).ready(function()
 
         auth.createUserWithEmailAndPassword(email, pswd).then(function()
         {
+            const auth = firebase.auth();
             var data = 
             {
+                uid: auth.currentUser.uid,
                 type: "Regular"
             };
 
             const db = firebase.firestore();
-            const auth = firebase.auth();
             db.collection("Users").doc(auth.currentUser.uid).set(data).then(function()
             {
                 $(".container").fadeOut(500);
@@ -91,4 +92,5 @@ $(document).ready(function()
             //console.log(db.collection("Users"));
         })
     });
+
 });
