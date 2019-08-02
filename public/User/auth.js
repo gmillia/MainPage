@@ -1,3 +1,13 @@
+/*
+Illia Shershun
+
+File that controls the behavior of the User page
+*/
+
+/*
+PURPOSE: initial function that checks if the user is logged in/out
+INVOKED: Once the page starts loading
+*/
 window.onload = function()
 {
     firebase.auth().onAuthStateChanged(user =>
@@ -26,13 +36,17 @@ window.onload = function()
             sessionTimeout && clearTimeout(sessionTimeout);
             sessionTimeout = null;
 
-            //window.location = "index.html";
             window.location.href = ".."
-            console.log(window.location);
         }
     });
 }
 
+/*
+PURPOSE: Start a new game 
+INVOKED: New Game button click
+
+TODO: Add modal that sets up new game info (teams names etc)
+*/
 $(document).on('click', '#newGame', function()
 {
     window.location.href = "../Dashboard";
@@ -77,8 +91,18 @@ function toDisplay()
             $("body").append(element);
         }
 
-        document.getElementsByTagName("html")[0].style.visibility = "visible";
+        //Show page once everything is set-up
+        showPage();
     });
+}
+
+/*
+PURPOSE: Show the page only when everything is ready
+INVOKED: End of toDisplay function (once dynamic content is loaded)
+*/
+function showPage()
+{
+    document.getElementsByTagName("html")[0].style.visibility = "visible";  
 }
 
 /*
