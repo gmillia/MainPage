@@ -50,12 +50,21 @@ TODO: Add modal that sets up new game info (teams names etc)
 $(document).on('click', '#newGame', function()
 {
     window.location.href = "../Dashboard";
+    //window.location.href = "New Game";
 });
 
 //Sign user out when sign out button is clicked
 $(document).on('click', '#signOut', function()
 {
     firebase.auth().signOut();
+});
+
+var loadedSaved = false;
+$(document).on('click', '#load', function()
+{
+    console.log(45);
+    createLoadButtons(loadedSaved);
+    loadedSaved = true;
 });
 
 /*
@@ -66,7 +75,6 @@ IN-TEST: Currently testing loading options for users who have Premium account
 */
 function toDisplay()
 {
-    var loadedSaved = false;
     const auth = firebase.auth();
     const db = firebase.firestore();
 
@@ -78,19 +86,6 @@ function toDisplay()
         if(userType == "Regular" || userType == "Premium")
         {
             console.log(userType);
-
-            /*
-            var element = document.createElement("input");
-            element.type = "button";
-            element.value = "Load"
-            element.onclick = function()
-            { 
-                createLoadButtons(loadedSaved);
-                loadedSaved = true;
-            };
-
-            $(".menu").append(element);
-            */
 
             var load_li = document.createElement("li");
             load_li.id = "load";
