@@ -34,10 +34,12 @@ $(document).on('click', '#saveData', function()
     if(homeTeam == "") homeTeam = "Home Team";
     if(awayTeam == "") awayTeam = "Away Team";
 
+    var date = getDate();
     //Data to be saved is user id (for matching and making sure access is grandted only to auth users) and teams info
     var data = 
     {
         uid: firebase.auth().currentUser.uid,
+        date: date,
         t1: T1,
         t2: T2
     }
@@ -49,4 +51,15 @@ $(document).on('click', '#saveData', function()
     //Save data in the Games collection with the desired filename
     db.collection("Games").doc(filename).set(JSON.parse(JSON.stringify(data)));
 });
+
+function getDate()
+{
+    var dateObj = new Date();
+    var month = dateObj.getUTCMonth();
+    var day = dateObj.getUTCDay();
+    var year = dateObj.getUTCFullYear();
+
+    var date = day + '/' + month + '/' + year;
+    return date;
+}
 

@@ -15,6 +15,7 @@
     <script src="auth.js"></script>
 
     <script>
+        /*
         $(document).on('mouseover', 'ul.menu li', function()
         {
             $('body').addClass('dark').removeClass('light'); 
@@ -24,6 +25,7 @@
         {
             $('body').addClass('light').removeClass('dark'); 
         });
+        */
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -59,14 +61,11 @@
             
         }
 
-        .loadBtns
-        {
-            background: yellow;
-        }
 
         body, body * 
         {
-            transition: all 200ms ease-out;
+            transition: all 100ms ease-out;
+            margin: 0;
         }
 
         body.light 
@@ -82,7 +81,8 @@
         body ul.menu 
         {
 
-
+            display: flex;
+            flex-direction: row;
             align-items: center;
             text-align: center;
 
@@ -90,33 +90,77 @@
 
         body ul.menu li 
         {
-            color: #000000;
+            color: grey;
             list-style-type: none;
             line-height: 50px;
             font-family: 'Raleway', sans-serif;
-            font-size: 50px;
+            font-size: 40px;
             text-transform: lowercase;
         }
 
         body ul.menu li:hover 
         {
-            color: #eeeeee;
+            /*color: #eeeeee;*/
+            color: #000000;
             cursor: pointer;
         }
+
+        li:focus{
+            color: lightblue;
+        }
+
+        #content
+        {
+            height: 85%;
+            margin-top: 2%;
+            overflow-y: auto;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+        }
+
+        table{
+            width: 75%;
+        }
+
+        th, td{
+            font-family: 'Raleway', sans-serif;
+            border: 3px solid white;
+            text-align: center;
+            font-size: 25px;
+            color: white;
+            padding: 0;
+        }
+
+        table li{
+            list-style-type: none;
+        }
+
+        tbody tr:hover{
+            background-color: lightblue;
+        }
+
+        tbody li:hover{
+            cursor: pointer;
+        }
+
+
     </style>
 
     
 
     <body>
 
-        <div id="loadModal" class="loadModalClass">
-            <div class="loadContent">
-                <h1>Saved:</h1>
-            </div>
-        </div>
-
         <ul class="menu">
             <li id="newGame"><span>New Game</span></li>
+            <li style="width: 2%"></li>
+            <li id="temp"><span></span></li>
+            <li style="width: 2%"></li>
         </ul>
+
+        <div id="content">
+
+        </div>
     </body>
 </html>

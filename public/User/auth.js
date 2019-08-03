@@ -62,7 +62,7 @@ $(document).on('click', '#signOut', function()
 var loadedSaved = false;
 $(document).on('click', '#load', function()
 {
-    console.log(45);
+    console.log(23);
     createLoadButtons(loadedSaved);
     loadedSaved = true;
 });
@@ -128,9 +128,13 @@ function createLoadButtons(loadedSaved)
         //For each document on the queried list create button
         qr.get().then(function(docs)
         {
+            createTable();
+
             //Create buttons to load saved match
+            var doc_cnt = 0;
             docs.forEach(function(doc)
             {
+                /*
                 var element = document.createElement("input");
                 element.type = "button";
                 element.value = doc.id;  //button name = saved filename
@@ -144,17 +148,65 @@ function createLoadButtons(loadedSaved)
                 };
 
                 //Add created buttons to the loadedModal
-                $(".loadContent").append(element);
+                $("#content").append(element);
+                */
+                var date = doc.data().date;
+                createLoad(doc.id, doc_cnt, date);
+                doc_cnt+=1;
             });
         }).then(function()
         {
             //Once buttons are created -> show modal
-            $("#loadModal").fadeIn("slow");
+            $("#content")[0].style.background = "#000000";
+            $("#content").fadeIn("slow");
+            console.log(66);
         });
     }
     //If already created buttons -> just show the loadedModal
-    else $("#loadModal").fadeIn("slow");
+    else $("#content").fadeIn("slow");
 }
+
+function createLoad(id, cnt, date)
+{
+    $("#loadTable").append($("<tr />", {id:"tr"+cnt}));
+    $("#tr"+cnt).append($("<td />", {id:"td"+cnt}));
+    $("#tr"+cnt).append($("<td />", {id:"date"+cnt, text: date}));
+    //For link
+    $("#td"+cnt).append($("<li/>", 
+    {
+        id:id,
+        text: id,
+        click: function()
+        {
+            var queryString = "?load=" + id;
+            window.location.href = "../Dashboard" + queryString;
+        }
+    }));
+}
+
+function createTable()
+{
+    
+    var table = document.createElement("table");
+    table.id = "loadTable";
+    var tr1 = document.createElement("tr");
+    var tn1 = document.createElement("th");
+    var tn2 = document.createElement("th");
+    tn1.innerHTML = "Filename";
+    tn2.innerHTML = "Date";
+    tr1.append(tn1);
+    tr1.append(tn2);
+    table.append(tr1);
+    $("#content").append(table);
+    
+
+    $("#content").append($('<button/>', {id:"closeBtn", text:"Close"}));
+}
+
+$(document).on('click', '#closeBtn', function()
+{
+    $("#loadTable").fadeOut("slow");
+});
 
 /*
 Function responsible to closing the loadModal 
