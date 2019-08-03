@@ -75,10 +75,11 @@ function toDisplay()
     {
         var userType = doc.data().type;
 
-        if(userType == "Premium")
+        if(userType == "Regular" || userType == "Premium")
         {
-            console.log("Premium");
+            console.log(userType);
 
+            /*
             var element = document.createElement("input");
             element.type = "button";
             element.value = "Load"
@@ -88,7 +89,18 @@ function toDisplay()
                 loadedSaved = true;
             };
 
-            $("body").append(element);
+            $(".menu").append(element);
+            */
+
+            var load_li = document.createElement("li");
+            load_li.id = "load";
+
+            var load_span = document.createElement("span");
+            load_span.innerHTML = "Load";
+
+            load_li.append(load_span);
+            
+            $(".menu").append(load_li);
         }
 
         //Show page once everything is set-up
@@ -142,11 +154,11 @@ function createLoadButtons(loadedSaved)
         }).then(function()
         {
             //Once buttons are created -> show modal
-            $("#loadModal").show();
+            $("#loadModal").fadeIn("slow");
         });
     }
     //If already created buttons -> just show the loadedModal
-    else $("#loadModal").show();
+    else $("#loadModal").fadeIn("slow");
 }
 
 /*
@@ -158,6 +170,7 @@ window.onclick = function(evt)
     var modal = document.getElementById("loadModal");
     if(evt.target == modal)
     {
-        modal.style.display = 'none';
+        //modal.style.display = 'none';
+        $("#loadModal").fadeOut("slow");
     }
 }

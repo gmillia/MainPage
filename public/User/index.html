@@ -1,5 +1,7 @@
 <html>
 
+    <link href='https://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'>
+
     <script src="/__/firebase/6.3.1/firebase-app.js"></script>
 
     <!-- Add Firebase products that you want to use -->
@@ -11,19 +13,37 @@
     <script src="/__/firebase/init.js"></script>
 
     <script src="auth.js"></script>
+
+    <script>
+        /*
+        $(document).ready(function()
+        {   
+            $('body').addClass('light');
+            
+            $('ul.menu li').mouseover(function(){
+                $('body').addClass('dark').removeClass('light');
+            });
+            
+            $('ul.menu li').mouseout(function(){
+                $('body').addClass('light').removeClass('dark');
+            });        
+        })
+        */
+
+        $(document).on('mouseover', 'ul.menu li', function()
+        {
+            $('body').addClass('dark').removeClass('light'); 
+        });
+
+        $(document).on('mouseout', 'ul.menu li', function()
+        {
+            $('body').addClass('light').removeClass('dark'); 
+        });
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        html, body{
-            height: 100%;
-            background: red;
-            align-content: center;
-            align-items: center;
-            text-align: center;
-            justify-content: center;
-            display: flex;
-        }
-
-        html{
+        html
+        {
             visibility: hidden;
         }
 
@@ -61,13 +81,56 @@
         {
             background: yellow;
         }
+
+        body, body * 
+        {
+            transition: all 100ms ease-out;
+        }
+
+        body.light 
+        {
+            background-color: #eeeeee;
+        }
+
+        body.dark 
+        {
+            background-color: #222222;
+        }
+
+        body ul.menu 
+        {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            align-items: center;
+            text-align: center;
+            margin-top: 15%;
+        }
+
+        body ul.menu li 
+        {
+            color: #000000;
+            list-style-type: none;
+            line-height: 50px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 50px;
+            text-transform: lowercase;
+        }
+
+        body ul.menu li:hover 
+        {
+            color: #eeeeee;
+            cursor: pointer;
+        }
     </style>
 
-    <body>
-        <button id="signOut">Sign out</button>
-        <button id="newGame">New Game</button>
+    
 
-        <button id="test">TEST</button>
+    <body>
+        <ul class="menu">
+            <li id="newGame"><span>New Game</span></li>
+        </ul>
 
         <div id="loadModal" class="loadModalClass">
             <div class="loadContent">
@@ -75,6 +138,4 @@
             </div>
         </div>
     </body>
-
-
 </html>
