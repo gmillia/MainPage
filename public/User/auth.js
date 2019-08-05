@@ -17,7 +17,6 @@ window.onload = function()
         if(user)
         {
             console.log("Logged in");
-            toDisplay();
 
             //Set session timeout, so the user is logged out automatically after some time
             user.getIdTokenResult().then((idTokenResult)=>
@@ -27,6 +26,9 @@ window.onload = function()
                 const milsUntilExpiration = sessionDuration - (Date.now() - authTime);
                 sessionTimeout = setTimeout(() => firebase.auth().signOut(), milsUntilExpiration);
             })
+
+            $("#load").click();
+            toDisplay();
         }
         //Case 2: user is logged out
         else
@@ -59,12 +61,12 @@ $(document).on('click', '#signOut', function()
     firebase.auth().signOut();
 });
 
-var loadedSaved = false;
-$(document).on('click', '#load', function()
+$(document).on('click', '#account', function()
 {
-    console.log(23);
-    createLoadButtons(loadedSaved);
-    loadedSaved = true;
+    console.log(48);
+    //$("#loadTable").fadeOut("slow");
+    $("#content").hide();
+    $("#content").load("HTML/account.html").fadeIn(1000);
 });
 
 /*
@@ -83,6 +85,7 @@ function toDisplay()
     {
         var userType = doc.data().type;
 
+        /*
         if(userType == "Regular" || userType == "Premium")
         {
             console.log(userType);
@@ -97,6 +100,7 @@ function toDisplay()
             
             $(".menu").append(load_li);
         }
+        */
 
         //Show page once everything is set-up
         showPage();
@@ -113,111 +117,11 @@ function showPage()
 }
 
 /*
-PURPOSE: Helper function that creates load buttons displayed in the loadModal when Load button is clicked
-INVOKED: Load button click
+PURPOSE: change the font size of all the menu options
+INVOKED: when any menu li is click
 */
-function createLoadButtons(loadedSaved)
+$(document).on('click', 'li', function()
 {
-    //Check if already loaded docs
-    if(!loadedSaved)
-    {
-        var db = firebase.firestore();
-        var gameRef = db.collection("Games");
-        var qr = gameRef.where("uid", "==", firebase.auth().currentUser.uid);
-
-        //For each document on the queried list create button
-        qr.get().then(function(docs)
-        {
-            createTable();
-
-            //Create buttons to load saved match
-            var doc_cnt = 0;
-            docs.forEach(function(doc)
-            {
-                /*
-                var element = document.createElement("input");
-                element.type = "button";
-                element.value = doc.id;  //button name = saved filename
-                element.className = "loadBtns";
-
-                //Once the button is clicked, open dashboard with the loaded data
-                element.onclick = function()
-                { 
-                    var queryString = "?load=" + element.value;
-                    window.location.href = "../Dashboard" + queryString;
-                };
-
-                //Add created buttons to the loadedModal
-                $("#content").append(element);
-                */
-                var date = doc.data().date;
-                createLoad(doc.id, doc_cnt, date);
-                doc_cnt+=1;
-            });
-        }).then(function()
-        {
-            //Once buttons are created -> show modal
-            $("#content")[0].style.background = "#000000";
-            $("#content").fadeIn("slow");
-            console.log(66);
-        });
-    }
-    //If already created buttons -> just show the loadedModal
-    else $("#content").fadeIn("slow");
-}
-
-function createLoad(id, cnt, date)
-{
-    $("#loadTable").append($("<tr />", {id:"tr"+cnt}));
-    $("#tr"+cnt).append($("<td />", {id:"td"+cnt}));
-    $("#tr"+cnt).append($("<td />", {id:"date"+cnt, text: date}));
-    //For link
-    $("#td"+cnt).append($("<li/>", 
-    {
-        id:id,
-        text: id,
-        click: function()
-        {
-            var queryString = "?load=" + id;
-            window.location.href = "../Dashboard" + queryString;
-        }
-    }));
-}
-
-function createTable()
-{
-    
-    var table = document.createElement("table");
-    table.id = "loadTable";
-    var tr1 = document.createElement("tr");
-    var tn1 = document.createElement("th");
-    var tn2 = document.createElement("th");
-    tn1.innerHTML = "Filename";
-    tn2.innerHTML = "Date";
-    tr1.append(tn1);
-    tr1.append(tn2);
-    table.append(tr1);
-    $("#content").append(table);
-    
-
-    $("#content").append($('<button/>', {id:"closeBtn", text:"Close"}));
-}
-
-$(document).on('click', '#closeBtn', function()
-{
-    $("#loadTable").fadeOut("slow");
+    $("ul").children().removeClass("btnselected");
+    $(this).addClass('btnselected');
 });
-
-/*
-Function responsible to closing the loadModal 
-TODO: Change to it closes the menu modal as well (once its done)
-*/
-window.onclick = function(evt)
-{
-    var modal = document.getElementById("loadModal");
-    if(evt.target == modal)
-    {
-        //modal.style.display = 'none';
-        $("#loadModal").fadeOut("slow");
-    }
-}

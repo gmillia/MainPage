@@ -1,0 +1,44 @@
+table
+{
+    width: 75%;
+    border-collapse: collapse;
+}
+
+table caption
+{
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-size: 40px;
+}
+
+th, td
+{
+    font-family: 'Raleway', sans-serif;
+    border: 3px solid white;
+    text-align: center;
+    font-size: 25px;
+    color: white;
+    padding: 0;
+}
+
+table li
+{
+    list-style-type: none;
+}
+tbody tr{
+    pointer-events: none;
+}
+
+tbody td{
+    pointer-events: auto;
+}
+
+tr:hover{
+    background: lightblue;
+}
+
+
+tbody li:hover
+{
+    cursor: pointer;
+}
