@@ -61,14 +61,6 @@ $(document).on('click', '#signOut', function()
     firebase.auth().signOut();
 });
 
-$(document).on('click', '#account', function()
-{
-    console.log(48);
-    //$("#loadTable").fadeOut("slow");
-    $("#content").hide();
-    $("#content").load("HTML/account.html").fadeIn(1000);
-});
-
 /*
 PURPOSE: Helper function that decides what to display based on the user auth type
 INVOKED: in onAuthChange function, when user is logged in 
