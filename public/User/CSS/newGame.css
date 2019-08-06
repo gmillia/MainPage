@@ -1,8 +1,10 @@
 h2
 {
+    font-family: 'Raleway', sans-serif;
     color: white;
 }
 
+/*Div box inside which user text input is placed*/
 #userInput
 {
     display: flex;
@@ -16,10 +18,17 @@ h2
 
 .userTextInput
 {
+    font-family: 'Raleway', sans-serif;
     text-align: center;
     width: 40%;
     height: 10%;
-    font-size: 30px;
+    font-size: 25px;
+}
+
+.userTextInput:focus
+{
+    border: 3px solid lightblue;
+    transition: 500ms ease-in;
 }
 
 
@@ -46,5 +55,6 @@ h2
     align-items: center;
     display: flex;
     justify-content: center;
+    font-family: 'Raleway', sans-serif;
     font-size: 38px;
 }

@@ -10,7 +10,7 @@ INVOKED: New Game button click
 */
 $(document).on('click', '#newGame', function()
 {
-    console.log("New game clicked");
+    console.log("New Game Clicked");
 
     $("#content").hide().load("HTML/newGame.html");
     $("#content").fadeIn(1000);
