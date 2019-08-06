@@ -43,18 +43,6 @@ window.onload = function()
     });
 }
 
-/*
-PURPOSE: Start a new game 
-INVOKED: New Game button click
-
-TODO: Add modal that sets up new game info (teams names etc)
-*/
-$(document).on('click', '#newGame', function()
-{
-    window.location.href = "../Dashboard";
-    //window.location.href = "New Game";
-});
-
 //Sign user out when sign out button is clicked
 $(document).on('click', '#signOut', function()
 {
@@ -112,7 +100,7 @@ function showPage()
 PURPOSE: change the font size of all the menu options
 INVOKED: when any menu li is click
 */
-$(document).on('click', 'li', function()
+$(document).on('click', 'ul > li', function()
 {
     $("ul").children().removeClass("btnselected");
     $(this).addClass('btnselected');

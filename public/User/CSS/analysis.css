@@ -2,3 +2,14 @@ h2
 {
     color: white;
 }
+
+p
+{
+    color: white;
+}
+
+#content
+{
+    display: flex;
+    flex-direction: column;
+}

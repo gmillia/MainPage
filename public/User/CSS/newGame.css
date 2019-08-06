@@ -1,0 +1,30 @@
+h2
+{
+    color: white;
+}
+
+#decision
+{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    height: 10%;
+    justify-content: center;
+    text-align: center;
+}
+
+#startGame
+{
+    list-style-type: none;
+    color: black;
+    cursor: pointer;
+    background: lightblue;
+    border-radius: 5px;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-size: 38px;
+}
