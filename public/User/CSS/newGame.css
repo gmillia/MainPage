@@ -3,6 +3,26 @@ h2
     color: white;
 }
 
+#userInput
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: 70%;
+    width: 75%;
+}
+
+.userTextInput
+{
+    text-align: center;
+    width: 40%;
+    height: 10%;
+    font-size: 30px;
+}
+
+
 #decision
 {
     display: flex;
