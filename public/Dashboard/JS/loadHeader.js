@@ -34,7 +34,9 @@ function loadPage()
             if(loaded)
             {
                 $(".t1-name-input")[0].value = T1.name;
+                $(".t1-score-input")[0].value = T1.goals;
                 $(".t2-name-input")[0].value = T2.name;
+                $(".t2-score-input")[0].value = T2.goals;
                 $(".timer-mins-input")[0].value = timer.minutes;
                 $(".timer-secs-input")[0].value = "00";
                 $(".matchBtn").click();

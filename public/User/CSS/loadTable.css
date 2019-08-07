@@ -37,6 +37,10 @@ tr:hover{
     background: lightblue;
 }
 
+tbody td.remove:hover{
+    background: red;
+}
+
 
 tbody li:hover
 {

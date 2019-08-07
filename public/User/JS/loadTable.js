@@ -55,13 +55,21 @@ function populateTable()
     {
         //Create buttons to load saved match
         var doc_cnt = 0;
-        docs.forEach(function(doc)
+
+        //If there is nothing to load just show the content
+        if(docs.size == 0) showContent();
+        //Else load everything into the table first
+        else
         {
-            var date = doc.data().date;
-            createSaved(doc.id, doc_cnt, date);
-            doc_cnt+=1;
-        });
+            docs.forEach(function(doc)
+            {
+                var date = doc.data().date;
+                createSaved(doc.id, doc_cnt, date);
+                doc_cnt+=1;
+            });
+        }
     });
+    console.log("Done populating");
 }
 
 /*
@@ -70,10 +78,10 @@ INVOKED: From populateTable() for each individual file
 */
 function createSaved(id, cnt, date)
 {
-    $("#loadTable").append($("<tr />", {id:"tr"+cnt}));
-    $("#tr"+cnt).append($("<td />", {id:"td"+cnt}));
-    $("#tr"+cnt).append($("<td />", {id:"date"+cnt, text: date}));
-    //For link
+    $("#loadTable").append($("<tr />", {id:"tr"+cnt}));  //create new row
+    $("#tr"+cnt).append($("<td />", {id:"td"+cnt}));  //column for filename
+    $("#tr"+cnt).append($("<td />", {id:"date"+cnt, text: date}));  //column for date saved
+    //Create clickable link in the filename column
     $("#td"+cnt).append($("<li/>", 
     {
         id:id,
@@ -83,6 +91,25 @@ function createSaved(id, cnt, date)
             var queryString = "?load=" + id;
             window.location.href = "../Dashboard" + queryString;
         }
+    }));
+
+    $("#tr"+cnt).append($("<td />", {id:"rmv"+cnt, class:"remove"}));  //column for remove button
+    $("#rmv"+cnt).append($("<li/>", 
+    {
+        id:id,
+        text: "X",
+        click: function()
+        {
+            var db = firebase.firestore();
+            var gameRef = db.collection("Games");
+
+            var filename = $("#td"+cnt).text();
+            gameRef.doc(filename).delete().then(function()
+            {
+                console.log("Removed");
+                $("#load").click();
+            });
+        },
     }));
 
     //Make content visible
