@@ -1,8 +1,11 @@
 <div id="userInput">
     <h2>New Game</h2>
-    <input id="homeName" class="userTextInput" type="text" placeholder="Home Team Name">
+    <input id="homeName" class="userTextInput" type="text" placeholder="Home Team Name" maxlength="20">
     <br>
-    <input id="awayName" class="userTextInput" type="text" placeholder="Away Team Name">
+    <input id="awayName" class="userTextInput" type="text" placeholder="Away Team Name" maxlength="20">
+    <br>
+    <input id="halfLength" class="userTextInput" type="text" placeholder="Half Length [Mins]" maxlength="3"
+           oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 </div>
 
 <div id="decision" class="decisionBtns">

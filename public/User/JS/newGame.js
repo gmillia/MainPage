@@ -18,5 +18,15 @@ $(document).on('click', '#newGame', function()
 
 $(document).on('click', '#startGame', function()
 {
-    window.location.href = "../Dashboard";
+    var homeTeamName = $("#homeName")[0].value;
+    var awayTeamName = $("#awayName")[0].value;
+    var halfLength = $("#halfLength")[0].value;
+
+    if(homeTeamName == "") homeTeamName = "Home Team";
+    if(awayTeamName == "") awayTeamName = "Away Team";
+    if(halfLength == "") halfLength = "40";
+
+    var queryString = "?homeTeam="+homeTeamName+"&awayTeam="+awayTeamName+"&halfLength="+halfLength;
+    //console.log(queryString);
+    window.location.href = "../Dashboard" + queryString;
 });
