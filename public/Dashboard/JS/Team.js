@@ -46,7 +46,32 @@ class Team
 	*/
 	loadFromSaved(savedList)
 	{
-		//this.assists = savedList[0];
+		this.GKSaves = savedList[0];
+		this.assists = savedList[1];
+		this.attacks = savedList[2];
 		this.blockedShots = savedList[3];
+		this.completedPasses = savedList[4];
+		this.corners = savedList[5];
+		this.dangerousAttacks = savedList[6];
+		this.foulsBy = savedList[7];
+		this.foulsOn = savedList[8];
+		this.goals = savedList[9];
+		this.incompletePasses = savedList[10];
+		this.lastPosMin = savedList[11];
+		this.lastPosSec = savedList[12];
+		this.minutes = savedList[13];
+		this.minutesGoal = savedList[14];
+		this.name = savedList[15];
+		this.offsides = savedList[16];
+		this.possession = savedList[17];
+		this.scorers = savedList[18];
+		this.secInPoss = savedList[19];
+		this.seconds = savedList[20];
+		this.secondsGoal = savedList[21];
+		this.shotsOffGoal = savedList[22];
+		this.shotsOnGoal = savedList[23];
+		this.throwIns = savedList[24];
+		this.totalPasses = savedList[25];
+		this.totalShots = savedList[26];
 	}
 }

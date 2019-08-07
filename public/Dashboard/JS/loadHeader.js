@@ -38,7 +38,6 @@ function loadPage()
                 $(".timer-mins-input")[0].value = timer.minutes;
                 $(".timer-secs-input")[0].value = "00";
                 $(".matchBtn").click();
-                console.log($(".t1-name-input")[0].value);
             }
         }).fadeIn("slow");
     });  

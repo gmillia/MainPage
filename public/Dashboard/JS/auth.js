@@ -65,14 +65,6 @@ $(document).ready(function()
         T1.name = data[2];
         T2.name = data[4];
         timer.minutes = data[6];
-        
-        /*
-        console.log($(".t1-name-input"));
-        $(".t1-name-input")[0].value = homeName;
-        $(".t2-name-input")[0].value = awayName;
-        $(".timer-mins-input")[0].value = halfLength;
-        $(".timer-secs-input")[0].value = "00";
-        */
 
         loadPage();
     }
@@ -91,8 +83,8 @@ $(document).ready(function()
             var t1 = Object.values(dt.t1);
             var t2 = Object.values(dt.t2);
 
-            //var ks = Object.keys(dt.t1);
-            //console.log(ks);
+            var ks = Object.keys(dt.t1);
+            console.log(ks);
 
             T1.loadFromSaved(t1);  //function from Team.js
             T2.loadFromSaved(t2);
@@ -102,5 +94,4 @@ $(document).ready(function()
             loadPage();  //start the page load in loadHeader
         });
     }
-    
 });
