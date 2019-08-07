@@ -54,12 +54,13 @@ $(document).on('click', '#saveData', function()
 
 function getDate()
 {
-    var dateObj = new Date();
-    var month = dateObj.getUTCMonth();
-    var day = dateObj.getUTCDay();
-    var year = dateObj.getUTCFullYear();
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
 
-    var date = day + '/' + month + '/' + year;
-    return date;
+    today = mm + '/' + dd + '/' + yyyy;
+
+    return today;
 }
 

@@ -69,7 +69,6 @@ function populateTable()
             });
         }
     });
-    console.log("Done populating");
 }
 
 /*
@@ -106,7 +105,6 @@ function createSaved(id, cnt, date)
             var filename = $("#td"+cnt).text();
             gameRef.doc(filename).delete().then(function()
             {
-                console.log("Removed");
                 $("#load").click();
             });
         },
