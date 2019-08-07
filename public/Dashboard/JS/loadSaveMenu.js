@@ -49,7 +49,11 @@ $(document).on('click', '#saveData', function()
     if(filename == "") filename = "Temporary";
 
     //Save data in the Games collection with the desired filename
-    db.collection("Games").doc(filename).set(JSON.parse(JSON.stringify(data)));
+    db.collection("Games").doc(filename).set(JSON.parse(JSON.stringify(data))).then(function()
+    {
+        console.log(544);
+        $("#saveOverlay").show();
+    });
 });
 
 function getDate()
