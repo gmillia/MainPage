@@ -3,78 +3,20 @@
     <link href="CSS/loadTable.css" rel="stylesheet" type="text/css">
     <link href="CSS/analysis.css" rel="stylesheet" type="text/css">
     <link href="CSS/newGame.css" rel="stylesheet" type="text/css">
+    <link href="CSS/Main.css" rel="stylesheet" type="text/css">
 
     <link href='https://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'>
-
-    <script src="/__/firebase/6.3.1/firebase-app.js"></script>
 
     <!-- Add Firebase products that you want to use -->
     <script src="/__/firebase/6.3.1/firebase-auth.js"></script>
     <script src="/__/firebase/6.3.1/firebase-firestore.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
     <!-- Initialize Firebase -->
     <script src="/__/firebase/init.js"></script>
 
-    <script src="auth.js"></script>
+    <script src="JS/auth.js"></script>
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        html
-        {
-            visibility: hidden;
-        }
-
-        #content
-        {
-            height: 85%;
-            width: 85%;
-            margin-top: 2% !important;
-            margin: 0 auto;
-            overflow-y: auto;
-            text-align: center;
-            align-items: center;
-            justify-content: center;
-            display: flex;
-            background: black;
-        }
-        
-        body ul.menu li 
-        {
-            color: grey;
-            list-style-type: none;
-            line-height: 50px;
-            font-family: 'Raleway', sans-serif;
-            font-size: 40px;
-            text-transform: lowercase;
-        }
-
-        body ul.menu li:hover 
-        {
-            color: #000000;
-            cursor: pointer;
-        }
-
-        li:focus{
-            color: lightblue;
-        }
-
-        .menu{
-            display: flex;
-            text-align: center;
-            justify-content: center;
-        }
-
-        li.btnselected{
-            font-size: 50px !important;
-            color: black !important;
-            transition: all 400ms ease-out;
-        }
-
-    </style>
-
-    
-
     <body>
 
         <ul class="menu">
@@ -94,9 +36,11 @@
         <div id="content">
 
         </div>
+
     </body>
     <script src="JS/newGame.js"></script>
     <script src="JS/loadTable.js"></script>
     <script src="JS/account.js"></script>
     <script src="JS/analysis.js"></script>
+
 </html>

@@ -1,0 +1,53 @@
+html
+{
+    visibility: hidden;
+}
+
+#content
+{
+    height: 85%;
+    width: 85%;
+    margin-top: 2% !important;
+    margin: 0 auto;
+    overflow-y: auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background: black;
+}
+
+body ul.menu li 
+{
+    color: grey;
+    list-style-type: none;
+    line-height: 50px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 40px;
+    text-transform: lowercase;
+}
+
+body ul.menu li:hover 
+{
+    color: #000000;
+    cursor: pointer;
+}
+
+li:focus
+{
+    color: lightblue;
+}
+
+.menu
+{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+li.btnselected
+{
+    font-size: 50px !important;
+    color: black !important;
+    transition: all 400ms ease-out;
+}
