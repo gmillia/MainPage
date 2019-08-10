@@ -1,230 +1,162 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" type="text/css" href="Home/SignInModel.css">
-<style>
-body, html {
-  height: 100%;
-  margin: 0;
-  font: 400 15px/1.8 "Lato", sans-serif;
-  color: #777;
-}
+    <link rel="stylesheet" type="text/css" href="Home/CSS/SignInModel.css">
+    <link rel="stylesheet" type="text/css" href="Home/CSS/Main.css">
+  </head>
+  <body>
 
-.bgimg-1, .bgimg-2, .bgimg-3 {
-  position: relative;
-  opacity: 0.65;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+    <!--Start of the first [1] part of the page-->
+    <div class="bgimg-1">
 
-.bgimg-1 {
-  display: flex;
-  background-image: url("Home/img1.jpeg");
-  min-height: 100%;
-  margin: auto;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-}
+      <div class="caption">
+        <a class="signInBtn" href="#">SIGN IN</span>
+      </div>
 
-.bgimg-2 {
-  background-image: url("Home/dash.png");
-  min-height: 400px;
-}
+      <!--Start for the div for the sign-in/up-->
+      <div id="modalRoot">
 
-.bgimg-3 {
-  background-image: url("Home/stats.PNG");
-  min-height: 400px;
-}
+        <!--Start of the container for the sign-in/up modal-->
+        <div class="container" id="container">
 
-.caption {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 100%;
-  text-align: center;
-  color: #000;
-}
+          <!--Start of the sign-up container-->
+          <div class="form-container sign-up-container">
+            <!--Start of the sign-up form-->
+            <form id="signUpForm">
+              <h1>Create Account</h1>
 
-.caption .signInBtn {
-  background-color: #111;
-  color: #fff;
-  padding: 18px;
-  font-size: 25px;
-  letter-spacing: 10px;
-}
+              <input id="signUpName" type="text" placeholder="Name" />
+              <input id="signUpEmail" type="email" placeholder="Email" required/>
+              <input id="signUpPsw" type="password" placeholder="Password" required/>
+              <button id="signUpBtn">Sign Up</button>
+            </form>
+            <!--End of the sign-up form-->
+          </div>
+          <!--End of the sign-up container-->
 
-h3 {
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  font: 20px "Lato", sans-serif;
-  color: #111;
-}
+          <!--Start of the left sign-in form container-->
+          <div class="form-container sign-in-container">
+            <!--Start of the sign-in form-->
+            <form id="signInForm">
+              <h1>Sign in</h1>
+              <!--
+              <div class="social-container">
+                  <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                  <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+              <span>or use your account</span>
+              -->
+              <input id="signInEmail" type="email" placeholder="Email" required/>
+              <input id ="signInPsw" type="password" placeholder="Password" required/>
+              <div id="signInError">
+                <span>Wrong email or password.</span>
+                <span>Please try again</span>
+              </div>
+              <a href="#">Forgot your password?</a>
+              <button id="signInBtnModal">Sign In</button>
+            </form>
+            <!--End of sign-in form-->
+          </div>
+          <!--End of the sign-in form container-->
 
-/* Turn off parallax scrolling for tablets and phones */
-@media only screen and (max-device-width: 1024px) {
-  .bgimg-1, .bgimg-2, .bgimg-3 {
-    background-attachment: scroll;
-  }
-}
+          <!--Start of overlay div for showing sign in or sign up-->
+          <div class="overlay-container">
+            <!--Start of actual overlay-->
+            <div class="overlay">
+              <!--Right-hand sign-up overlay-->
+              <div class="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>To keep connected with us please login with your personal info</p>
+                <button class="ghost" id="signIn">Sign In</button>
+              </div>
+              <!--End of sign-up overlay-->
+              <!--Left-hand sign-in overlay-->
+              <div class="overlay-panel overlay-right">
+                <h1>Hello, Friend!</h1>
+                <p>Enter your personal details and start journey with us</p>
+                <button class="ghost" id="signUp">Sign Up</button>
+              </div>
+              <!--End of sign-in overlay-->
+            </div>
+            <!--End of actual overlay-->
+          </div>
+          <!--End of container for overlay-->
 
-.signInBtn
-{
-    text-decoration: none;
-}
+        </div>
+        <!--End of the sign-in/up modal container-->
 
-.signInModel
-{
-    display: none;
-    position: absolute !important;
-    z-index: 1;
-    padding-top: 4%;
-    width: 100%;
-    height: 90%;
-    /*
-    background-color: rgb(0,0,0);
-    background-color:rgba(0,0,0,0.4);*/
-}
+      </div>
+      <!--End of the sign-in/up div-->
 
-.after_modal_append
-{
-    position: relative;
-}
-
-.signInModelContent
-{
-    background: #fefefe;
-    width: 90%;
-    height: 90%;
-    margin: auto;
-
-}
-
-.container
-{
-    display: none;
-}
-
-#signInError
-{
-  display: none;
-  color: red;
-}
-</style>
-</head>
-<body>
-
-<div class="bgimg-1">
-  <div class="caption">
-    <a class="signInBtn" href="#">SIGN IN</span>
-  </div>
-  <div id="modalRoot">
-  <div class="container" id="container">
-    <div class="form-container sign-up-container">
-      <form id="signUpForm">
-        <h1>Create Account</h1>
-
-        <input id="signUpName" type="text" placeholder="Name" />
-        <input id="signUpEmail" type="email" placeholder="Email" required/>
-        <input id="signUpPsw" type="password" placeholder="Password" required/>
-        <button id="signUpBtn">Sign Up</button>
-      </form>
     </div>
-    <div class="form-container sign-in-container">
-      <form id="signInForm">
-        <h1>Sign in</h1>
-        <!--
-        <div class="social-container">
-            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-        <span>or use your account</span>
-        -->
-        <input id="signInEmail" type="email" placeholder="Email" required/>
-        <input id ="signInPsw" type="password" placeholder="Password" required/>
-        <div id="signInError">
-          <span>Wrong email or password.</span>
-          <span>Please try again</span>
-        </div>
-        <a href="#">Forgot your password?</a>
-        <button id="signInBtnModal">Sign In</button>
-      </form>
+    <!--End of the first [1] part of the page-->
+
+    <!--Start of the second [2] part of the page-->
+    <div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
+      <h3 style="text-align:center;">ABOUT</h3>
+      <p>
+          Most stats keeping software is very robust and hard to use for a regular team. This website was created with the 
+          idea of simplicity: simple statistical input and somewhat complex statistical output. Of course, there are many 
+          imporvements to be made to this first and simple version, but all essential are already here! Possession, passes,
+          shots, and much more. If you have any suggestions or ideas - feel free to contact me! 
+      </p>
     </div>
-    <div class="overlay-container">
-      <div class="overlay">
-        <div class="overlay-panel overlay-left">
-          <h1>Welcome Back!</h1>
-          <p>To keep connected with us please login with your personal info</p>
-          <button class="ghost" id="signIn">Sign In</button>
-        </div>
-        <div class="overlay-panel overlay-right">
-          <h1>Hello, Friend!</h1>
-          <p>Enter your personal details and start journey with us</p>
-          <button class="ghost" id="signUp">Sign Up</button>
-        </div>
+    <!--End of the second [2] part of the page-->
+
+    <!--Start of the third [3] part of the page-->
+    <div class="bgimg-2">
+      <div class="caption">
+      <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;"></span>
       </div>
     </div>
-  </div>
-  </div>
-</div>
+    <!--End of the third [3] part of the page-->
 
-<div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
-  <h3 style="text-align:center;">ABOUT</h3>
-  <p>
-      Most stats keeping software is very robust and hard to use for a regular team. This website was created with the 
-      idea of simplicity: simple statistical input and somewhat complex statistical output. Of course, there are many 
-      imporvements to be made to this first and simple version, but all essential are already here! Possession, passes,
-      shots, and much more. If you have any suggestions or ideas - feel free to contact me! 
-  </p>
-</div>
+    <!--Start of the fourth [4] part of the page-->
+    <div style="position:relative;">
+      <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+        <p>
+            Easy to use dashboard that enables you to input statistics for both teams, that instantly transfers intormation
+            to statistical menu, in which you can easily track game stats. 
+        </p>
+      </div>
+    </div>
+    <!--End of the fourth [4] part of the page-->
 
-<div class="bgimg-2">
-  <div class="caption">
-  <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;"></span>
-  </div>
-</div>
+    <!--Start of the fifth [5] part of the page-->
+    <div class="bgimg-3">
+      <div class="caption">
+      <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;"></span>
+      </div>
+    </div>
+    <!--End of the fifth [5] part of the page-->
 
-<div style="position:relative;">
-  <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
-    <p>
-        Easy to use dashboard that enables you to input statistics for both teams, that instantly transfers intormation
-        to statistical menu, in which you can easily track game stats. 
-    </p>
-  </div>
-</div>
+    <!--Start of the sixth [6] part of the page-->
+    <div style="position:relative;">
+      <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+      
+      </div>
+    </div>
+    <!--End of the sixth [6] part of the page-->
 
-<div class="bgimg-3">
-  <div class="caption">
-  <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;"></span>
-  </div>
-</div>
+    <!--The core Firebase JS SDK is always required and must be listed first-->
+    <script src="/__/firebase/6.3.1/firebase-app.js"></script>
 
-<div style="position:relative;">
-  <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
-  
-  </div>
-</div>
+    <!--Add Firebase products that you want to use-->
+    <script src="/__/firebase/6.3.1/firebase-auth.js"></script>
+    <script src="/__/firebase/6.3.1/firebase-firestore.js"></script>
 
+    <!--Initialize Firebase-->
+    <script src="/__/firebase/init.js"></script>
 
-<!--The core Firebase JS SDK is always required and must be listed first-->
-<script src="/__/firebase/6.3.1/firebase-app.js"></script>
+  </body>
 
-<!--Add Firebase products that you want to use-->
-<script src="/__/firebase/6.3.1/firebase-auth.js"></script>
-<script src="/__/firebase/6.3.1/firebase-firestore.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-<!--Initialize Firebase-->
-<script src="/__/firebase/init.js"></script>
-
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
-<script src="Home/SignInModel.js"></script>
-<script src="Home/auth.js"></script>
+  <script src="Home/JS/SignInModel.js"></script>
+  <script src="Home/JS/auth.js"></script>
 
 </html>
