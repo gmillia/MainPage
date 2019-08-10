@@ -2,40 +2,89 @@
     #saveName[type=text]
     {
         text-align:center;
-        border: 1px solid black;
+        border: 1px solid white;
+        height: 5%;
+        width: 30%;
+        font-size: 20px;
+        color: white;
+    }
+
+    .Content
+    {
+        font-family: 'Raleway', sans-serif;
+        display: block;
+        text-align: center;
+        align-items: center;
+
+        background: black;
+        color: white;
     }
 
     #saveContainer
     {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 5%;
+        width:100%;
+    }
+    #saveGame
+    {
+        display: flex;
+        justify-content: center;
+        list-style-type: none;
         height: 100%;
-        width: 100%;
-        background: red;
+        width: 7%;
+        background: green;
         text-align: center;
+        align-items: center;
+        font-size: 30px;
+        cursor: pointer;
+        
     }
 
     #saveOverlay
     {
-        display:block;
-        position: fixed;
+        display: none;
+        position: absolute;
         width: 100%;
         height: 10%;
         background: green;
         text-align: center;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+    }
+
+    #failOverlay
+    {
+        display: none;
+        position: absolute;
+        width: 100%;
+        height: 10%;
+        background: red;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
     }
 </style>
 
+<link href='https://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'>
+
 <div id="saveOverlay">
-        <span>SAVED</span>
-    </div>
-
-<div id="saveContainer" class="saveContainer">
-    <h1>Save as:</h1>
-    <input type="text" id="saveName" placeholder="Filename" required>
-
-    <div style="height:20px"></div>
-
-    <div id="btns">
-        <button type="button" id="saveData">Save</button>
-        <button type="button" id="loadData">Load</button>
-    </div>
+    <span>Saved as</span>
 </div>
+
+<div id="failOverlay">
+    <span>Already Exists</span>
+</div>
+
+<h1>Save As:</h1>
+<input type="text" id="saveName" placeholder="Filename" required maxlength="40">
+
+<div style="height:20px"></div>
+<div id="saveContainer">
+    <li id="saveGame">Save</li>
+</div>
+

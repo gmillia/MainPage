@@ -9,7 +9,7 @@ Function that controls behavior on the Save button click: opens Save submenu
 */
 $(document).on('click', '.saveBtn', function()
 {
-    if(!document.querySelector(".saveContainer"))
+    if(!$("#saveName")[0])
     {
         $(".Content").hide();
         $(".Content").load("HTML/saveMenu.html").fadeIn("slow");
@@ -21,7 +21,7 @@ Helper function that controls behavior when Save button is clicked in the Save-s
 
 TODO: alert user if file already exists uder certain name + limit number of charactes for filename
 */
-$(document).on('click', '#saveData', function()
+$(document).on('click', '#saveGame', function()
 {
     //console.log("Save");
     const db = firebase.firestore();
@@ -48,12 +48,38 @@ $(document).on('click', '#saveData', function()
     var filename = $("#saveName")[0].value;
     if(filename == "") filename = "Temporary";
 
+    var docRef = db.collection("Games").doc(filename);
+    
+    docRef.get().then(function(doc)
+    {
+        //File already exist, override?
+        if(doc)
+        {
+            $("#failOverlay")[0].style.display = "flex";
+
+        }
+    }).catch(function()
+    {
+        $("#saveOverlay")[0].innerHTML = "<span>" + "Saved as: " + filename + "</span>";
+        $("#saveOverlay")[0].style.display = "flex";
+        setTimeout(function()
+        {
+            $("#saveOverlay").fadeOut(800);
+        }, 2000);
+    });
+    /*
     //Save data in the Games collection with the desired filename
     db.collection("Games").doc(filename).set(JSON.parse(JSON.stringify(data))).then(function()
     {
-        console.log(544);
-        $("#saveOverlay").show();
+        $("#saveOverlay")[0].innerHTML = "<span>" + "Saved as: " + filename + "</span>";
+        //$("#saveOverlay").show();
+        $("#saveOverlay")[0].style.display = "flex";
+        setTimeout(function()
+        {
+            $("#saveOverlay").fadeOut(800);
+        }, 2000);
     });
+    */
 });
 
 function getDate()
