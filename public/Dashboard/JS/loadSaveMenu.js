@@ -79,7 +79,7 @@ $(document).on('click', '#override', function()
     $("#overrideContainer").hide();  //hide override buttons (yes/no)
     $("#saveContainer").show();  //display the Save button again
 
-    var overlayText = "<span>" + filename + " overridden" + "</span>";  //text displayed in the successful override
+    var overlayText = "<span>" + getFilename() + " overridden" + "</span>";  //text displayed in the successful override
     saveGame(getFilename(), getData(), overlayText);
 });
 

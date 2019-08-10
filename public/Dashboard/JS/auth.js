@@ -16,8 +16,6 @@ $(document).ready(function()
         //Case 1: User is logged in
         if(user)
         {
-            //console.log("Logged in" + firebase.auth().currentUser);
-
             //Set session timeout, so the user is logged out automatically after some time
             user.getIdTokenResult().then((idTokenResult)=>
             {
@@ -33,8 +31,6 @@ $(document).ready(function()
         //Case 2: user is logged out
         else
         {
-            //console.log("Logged out" + firebase.auth().currentUser);
-
             sessionTimeout && clearTimeout(sessionTimeout);
             sessionTimeout = null;
 
@@ -43,48 +39,54 @@ $(document).ready(function()
     });
 
     /*
-    Helper function that checks if load saved option was chosen, and if so
-    loads the saved data
-
+    PURPOSE: Helper function that checks if we are loading or creating new game
+    INVOKED: On the Dashboard initial load
     TODO: display 404 page if trying to access file that doesnt exist, insted of opening Dashboard page
     */
     function loadUrl()
     {
-        //Step 1: grab data from the URL (if data was passed)
+        //Grab data from the URL (if data was passed)
         var queryString = decodeURIComponent(window.location.search);
+        //Split url into substrings
         var url = queryString.split(/[?=&]/);
-        console.log(url);
-        //var job = url[1];
         
-        if(url[1] == "homeTeam") createNewGame(url);
+        //Case 1: we are creating new game
+        if(url[1] == "homeTeam") createNewGame(url); 
+        //Case 2: we are loading saved game
         else createSavedGame(url[2]);
     }
 
+    /*
+    PURPOSE: Helper function that creates new game from the passed data in the url (from new game menu)
+    INVOKED: When we create new game
+    */
     function createNewGame(data)
     {
         T1.name = data[2];
         T2.name = data[4];
         timer.minutes = data[6];
 
-        loadPage();
+        loadPage();  //Display page once everything is loaded
     }
 
+    /*
+    PURPOSE: Helper function that loads game from the saved file on the server
+    INVOKED: When we load the game
+    */
     function createSavedGame(filename)
     {
-        //Step 2: query the saved file from firebase firestore
+        //Query the saved file from firebase firestore
         const db = firebase.firestore();
         var gameRef = db.collection("Games");
-        var qr = gameRef.where("uid", "==", firebase.auth().currentUser.uid);
 
-        //Step 3: Get the document and set T1 and T2 to loaded vals
+        //Get the document and set T1 and T2 to loaded vals
         gameRef.doc(filename).get().then(function(doc)
         {
             var dt = doc.data();
-            var t1 = Object.values(dt.t1);
+            var t1 = Object.values(dt.t1);  //creates list from the queried data
             var t2 = Object.values(dt.t2);
 
-            var ks = Object.keys(dt.t1);
-            console.log(ks);
+            //var ks = Object.keys(dt.t1);  //names of the fields in Team
 
             T1.loadFromSaved(t1);  //function from Team.js
             T2.loadFromSaved(t2);
