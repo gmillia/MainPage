@@ -1,3 +1,4 @@
+/*Table styling (rows/cols)*/
 table
 {
     width: 75%;
@@ -21,26 +22,33 @@ th, td
     padding: 0;
 }
 
+/*Change the roow color when hovering over loadable row*/
 table li
 {
     list-style-type: none;
 }
-tbody tr{
+tbody tr
+{
     pointer-events: none;
 }
-
 tbody td{
     pointer-events: auto;
 }
-
 tr:hover{
     background: lightblue;
 }
 
-tbody td.remove:hover{
+/*When hovering over remove column*/
+tbody td.remove:hover
+{
     background: red;
 }
 
+/*When hovering above load filename column*/
+tbody td.loadLink:hover
+{
+    background: rgb(41, 218, 41);
+}
 
 tbody li:hover
 {

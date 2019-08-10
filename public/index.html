@@ -22,7 +22,7 @@ body, html {
 }
 
 .bgimg-1 {
-    display: flex;
+  display: flex;
   background-image: url("Home/img1.jpeg");
   min-height: 100%;
   margin: auto;
@@ -108,6 +108,12 @@ h3 {
 {
     display: none;
 }
+
+#signInError
+{
+  display: none;
+  color: red;
+}
 </style>
 </head>
 <body>
@@ -118,50 +124,53 @@ h3 {
   </div>
   <div id="modalRoot">
   <div class="container" id="container">
-        <div class="form-container sign-up-container">
-            <form id="signUpForm">
-                <h1>Create Account</h1>
+    <div class="form-container sign-up-container">
+      <form id="signUpForm">
+        <h1>Create Account</h1>
 
-
-                <input id="signUpName" type="text" placeholder="Name" />
-                <input id="signUpEmail" type="email" placeholder="Email" required/>
-                <input id="signUpPsw" type="password" placeholder="Password" required/>
-                <button id="signUpBtn">Sign Up</button>
-            </form>
-        </div>
-        <div class="form-container sign-in-container">
-            <form id="signInForm">
-                <h1>Sign in</h1>
-                <!--
-                <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <span>or use your account</span>
-                -->
-                <input id="signInEmail" type="email" placeholder="Email" required/>
-                <input id ="signInPsw" type="password" placeholder="Password" required/>
-                <a href="#">Forgot your password?</a>
-                <button id="signInBtnModal">Sign In</button>
-            </form>
-        </div>
-        <div class="overlay-container">
-            <div class="overlay">
-                <div class="overlay-panel overlay-left">
-                    <h1>Welcome Back!</h1>
-                    <p>To keep connected with us please login with your personal info</p>
-                    <button class="ghost" id="signIn">Sign In</button>
-                </div>
-                <div class="overlay-panel overlay-right">
-                    <h1>Hello, Friend!</h1>
-                    <p>Enter your personal details and start journey with us</p>
-                    <button class="ghost" id="signUp">Sign Up</button>
-                </div>
-            </div>
-        </div>
+        <input id="signUpName" type="text" placeholder="Name" />
+        <input id="signUpEmail" type="email" placeholder="Email" required/>
+        <input id="signUpPsw" type="password" placeholder="Password" required/>
+        <button id="signUpBtn">Sign Up</button>
+      </form>
     </div>
+    <div class="form-container sign-in-container">
+      <form id="signInForm">
+        <h1>Sign in</h1>
+        <!--
+        <div class="social-container">
+            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <span>or use your account</span>
+        -->
+        <input id="signInEmail" type="email" placeholder="Email" required/>
+        <input id ="signInPsw" type="password" placeholder="Password" required/>
+        <div id="signInError">
+          <span>Wrong email or password.</span>
+          <span>Please try again</span>
+        </div>
+        <a href="#">Forgot your password?</a>
+        <button id="signInBtnModal">Sign In</button>
+      </form>
     </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1>Welcome Back!</h1>
+          <p>To keep connected with us please login with your personal info</p>
+          <button class="ghost" id="signIn">Sign In</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h1>Hello, Friend!</h1>
+          <p>Enter your personal details and start journey with us</p>
+          <button class="ghost" id="signUp">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
 </div>
 
 <div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">

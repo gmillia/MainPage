@@ -93,6 +93,13 @@ INVOKED: End of toDisplay function (once dynamic content is loaded)
 */
 function showPage()
 {
+    /*
+    $("#welcomeOverlay")[0].style.display = "flex";
+    setTimeout(function()
+    {
+        $("#welcomeOverlay").fadeOut(800);   
+    },100000);
+    */
     document.getElementsByTagName("html")[0].style.visibility = "visible";  
 }
 

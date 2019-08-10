@@ -1,6 +1,7 @@
 /*
 Illia Shershun
 
+File that controls the behavior of the Dashboard initial load
 Makes sure user is logged in, sets timer to 3hrs (session time) checks if we are loading saved file or new game
 */
 

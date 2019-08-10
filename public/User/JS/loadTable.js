@@ -78,8 +78,9 @@ INVOKED: From populateTable() for each individual file
 function createSaved(id, cnt, date)
 {
     $("#loadTable").append($("<tr />", {id:"tr"+cnt}));  //create new row
-    $("#tr"+cnt).append($("<td />", {id:"td"+cnt}));  //column for filename
+    $("#tr"+cnt).append($("<td />", {id:"td"+cnt, class:"loadLink"}));  //column for filename
     $("#tr"+cnt).append($("<td />", {id:"date"+cnt, text: date}));  //column for date saved
+
     //Create clickable link in the filename column
     $("#td"+cnt).append($("<li/>", 
     {
@@ -93,6 +94,8 @@ function createSaved(id, cnt, date)
     }));
 
     $("#tr"+cnt).append($("<td />", {id:"rmv"+cnt, class:"remove"}));  //column for remove button
+
+    //Create clickable remove button 
     $("#rmv"+cnt).append($("<li/>", 
     {
         id:id,

@@ -5,8 +5,6 @@ const container = document.getElementById('container');
 signUpButton.addEventListener('click', () => {
 
     $(".container").addClass("right-panel-active");
-    //container.classList.add("right-panel-active");
-    //$(".signInModelContent")[0].style.background = "red";
 });
 
 signInButton.addEventListener('click', () => {

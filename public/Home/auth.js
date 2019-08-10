@@ -15,25 +15,6 @@ $(document).ready(function()
     const auth = firebase.auth();
     const db = firebase.firestore();
 
-
-    //whenever auth status changes
-    /*
-    auth.onAuthStateChanged(user =>
-    {
-        //case 1: user exists -> logged in
-        if(user)
-        {
-            console.log("logged in");
-            window.location = 'User/';
-
-        }
-        else
-        {
-            console.log("Logged out");
-        }
-    });
-    */
-
     $(".signInBtn").click(function()
     {
         $(".container").fadeIn(500);
@@ -55,11 +36,14 @@ $(document).ready(function()
         var email = $("#signInEmail")[0].value;
         var pswd = $("#signInPsw")[0].value;
 
-        auth.signInWithEmailAndPassword(email, pswd).then(cred =>
+        auth.signInWithEmailAndPassword(email, pswd).then(function()
         {
             $(".container").fadeOut(500);
             $("#signInForm")[0].reset();
             window.location = 'User/';
+        }).catch(function(error)
+        {
+            $("#signInError").show();
         });
 
     });
