@@ -56,7 +56,8 @@ $(document).on('click', '#saveGame', function()
         if(doc)
         {
             $("#failOverlay")[0].style.display = "flex";
-
+            $("#saveContainer").hide();
+            $("#overrideContainer")[0].style.display = "flex";
         }
     }).catch(function()
     {

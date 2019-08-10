@@ -28,7 +28,17 @@
         height: 5%;
         width:100%;
     }
-    #saveGame
+
+    #overrideContainer
+    {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        height: 5%;
+        width:100%;
+    }
+
+    #saveGame, #override, #notOverride
     {
         display: flex;
         justify-content: center;
@@ -77,7 +87,7 @@
 </div>
 
 <div id="failOverlay">
-    <span>Already Exists</span>
+    <span>Already Exists, Override?</span>
 </div>
 
 <h1>Save As:</h1>
@@ -86,5 +96,11 @@
 <div style="height:20px"></div>
 <div id="saveContainer">
     <li id="saveGame">Save</li>
+</div>
+
+<div id="overrideContainer">
+    <li id="override">Yes</li>
+    <div style="width: 2%"></div>
+    <li id="notOverride">No</li>
 </div>
 
