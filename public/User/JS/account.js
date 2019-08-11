@@ -22,6 +22,10 @@ $(document).on('click', '#account', function()
     });
 });
 
+/*
+PURPOSE: Load used info before displaying the page
+INVOKED: on inital page load when user clicks on account menu button
+*/
 function loadUserInfo()
 {
     var db = firebase.firestore();
@@ -34,15 +38,13 @@ function loadUserInfo()
         {
             var firstName = doc.data().firstName;
             var lastName = doc.data().lastName;
-    
-            //console.log(1, firstName, lastName);
 
-            $("#firstName")[0].innerHTML = firstName;
-            $("#lastName")[0].innerHTML = lastName;
+            $("#firstName")[0].innerHTML = firstName;  //display users firstName
+            $("#lastName")[0].innerHTML = lastName;  //display users lastName
         });
     });
 
-    showContent();
+    showContent();  //display content
 }
 
 /*

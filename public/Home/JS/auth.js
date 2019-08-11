@@ -1,26 +1,32 @@
+/*
+Illia Shershun
+
+File that controls the behavior of the Main page
+*/
+
+/*
+Controls the behavior of the page once its loaded
+*/
 $(document).ready(function()
 {
-    const firebaseConfig = 
-    {
-        apiKey: "AIzaSyCedruI1MjG3M75uvIKawSrx4XKyx8HibE",
-        authDomain: "soccer-stats-keeper.firebaseapp.com",
-        databaseURL: "https://soccer-stats-keeper.firebaseio.com",
-        projectId: "soccer-stats-keeper",
-        storageBucket: "soccer-stats-keeper.appspot.com",
-        messagingSenderId: "917015476956",
-        appId: "1:917015476956:web:1ce9a2c655906550"
-    };
-
     //firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const db = firebase.firestore();
 
+    /*
+    PURPOSE: Display Sign In Modal
+    INVOKED: On the Sign In button on the main page
+    */
     $(".signInBtn").click(function()
     {
         $(".container").fadeIn(500);
         $(".container").addClass("vis");
     });
 
+    /*
+    PURPOSE: Close the modal on the click outside of the modal
+    INVOKED: When user clicks outside the modal (when its open)
+    */
     $(window).click(function(evt)
     {
         if($(".container").hasClass("vis") && (evt.target.className) == ("bgimg-1"))
@@ -29,6 +35,10 @@ $(document).ready(function()
         }
     }); 
     
+    /*
+    PURPOSE: Sign the user in
+    INVOKED: On the click of Sign In button inside the signIn modal
+    */
     $("#signInBtnModal").click(function(e)
     {
         e.preventDefault();
@@ -48,6 +58,10 @@ $(document).ready(function()
 
     });
 
+    /*
+    PURPOSE: Sign user up (create new user)
+    INVOKED: On the Sign Up button click (inside Sign In modal)
+    */
     $("#signUpBtn").click(function(e)
     {
         e.preventDefault();
@@ -65,6 +79,10 @@ $(document).ready(function()
         }
     });
 
+    /*
+    PURPOSE: Helper function that creates new user account with user-supplied info
+    INVOKED: When Sign Up button is clicked (helper function)
+    */
     function createAccount(firstName, lastName, email, pswd)
     {
         auth.createUserWithEmailAndPassword(email, pswd).then(function()
@@ -95,6 +113,10 @@ $(document).ready(function()
         });   
     }
 
+    /*
+    PURPOSE: Display error when user doesn't fill out all the info during sign-up
+    INVOKED: When not all fields are filled out during sign-up
+    */
     function verifySignUpInfo(firstName, lastName, email, pswd)
     {
         if(firstName == "" || lastName == "" || email == "" || pswd == "")
