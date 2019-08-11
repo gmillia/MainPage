@@ -17,7 +17,6 @@ window.onload = function()
         if(user)
         {
             console.log("Logged in");
-            console.log("Verified: " + user.emailVerified);
 
             //Set session timeout, so the user is logged out automatically after some time
             user.getIdTokenResult().then((idTokenResult)=>
@@ -29,6 +28,7 @@ window.onload = function()
             })
 
             $("#load").click();
+            verifyEmail();
             toDisplay();
         }
         //Case 2: user is logged out
@@ -42,6 +42,22 @@ window.onload = function()
             window.location.href = ".."
         }
     });
+}
+
+/*
+PURPOSE: Display Bannner to notify user he needs to verify the email
+INVOKED: Initially when checking whether or not user is logged in
+*/
+function verifyEmail()
+{
+    var verified = firebase.auth().currentUser.emailVerified;
+
+    if(!verified)
+    {
+        console.log("Not verified");
+        $("#verifyContainer")[0].style.display = "flex";
+        $("#account").click();
+    }
 }
 
 //Sign user out when sign out button is clicked
@@ -87,6 +103,8 @@ function toDisplay()
         showPage();
     });
 }
+
+
 
 /*
 PURPOSE: Show the page only when everything is ready
