@@ -52,10 +52,21 @@ $(document).ready(function()
     {
         e.preventDefault();
 
-        var name = $("#signUpName")[0].value;
+        var firstName = $("#signUpFirstName")[0].value;
+        var lastName = $("#signUpFirstName")[0].value;
         var email = $("#signUpEmail")[0].value;
         var pswd = $("#signUpPsw")[0].value;
 
+        var nonEmpty = verifySignUpInfo(firstName, lastName, email, pswd);
+
+        if(nonEmpty)
+        {
+            createAccount(firstName, lastName, email, pswd);
+        }
+    });
+
+    function createAccount(firstName, lastName, email, pswd)
+    {
         auth.createUserWithEmailAndPassword(email, pswd).then(function()
         {
             firebase.auth().currentUser.sendEmailVerification();
@@ -63,7 +74,9 @@ $(document).ready(function()
             var data = 
             {
                 uid: auth.currentUser.uid,
-                type: "Regular"
+                type: "Regular",
+                firstName: firstName,
+                lastName: lastName
             };
 
             const db = firebase.firestore();
@@ -73,7 +86,22 @@ $(document).ready(function()
                 $("#signUpForm")[0].reset();
                 window.location = 'User/';
             });
-        })
-    });
+        }).catch(function(error)
+        {
+            if(error.code == "auth/email-already-in-use")
+            {
+                $("#emailInUseUp")[0].style.display = "flex";
+            }
+        });   
+    }
 
+    function verifySignUpInfo(firstName, lastName, email, pswd)
+    {
+        if(firstName == "" || lastName == "" || email == "" || pswd == "")
+        {
+            $("#signUpError")[0].style.display = "flex";
+            return false;
+        }
+        return true;
+    }
 });

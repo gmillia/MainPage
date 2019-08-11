@@ -111,9 +111,3 @@ h3
 {
     display: none;
 }
-
-#signInError
-{
-    display: none;
-    color: red;
-}

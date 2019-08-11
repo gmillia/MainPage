@@ -16,6 +16,19 @@
     background: grey;
 }
 
+#firstName, #lastName
+{
+    padding-top: 10%;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+}
+
+#lastName
+{
+    padding-top: 0;
+}
+
 #accountCont
 {
     display: flex;

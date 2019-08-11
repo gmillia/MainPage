@@ -28,9 +28,16 @@
             <form id="signUpForm">
               <h1>Create Account</h1>
 
-              <input id="signUpName" type="text" placeholder="Name" />
+              <input id="signUpFirstName" type="text" placeholder="First Name" required/>
+              <input id="signUpLastName" type="text" placeholder="Last Name" required/>
               <input id="signUpEmail" type="email" placeholder="Email" required/>
               <input id="signUpPsw" type="password" placeholder="Password" required/>
+              <div id="emailInUseUp">
+                <span>Email already in use</span>
+              </div>
+              <div id="signUpError">
+                <span>Please fill out all fields!</span>
+              </div>
               <button id="signUpBtn">Sign Up</button>
             </form>
             <!--End of the sign-up form-->
