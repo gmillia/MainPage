@@ -36,6 +36,9 @@ function loadUserInfo()
             var lastName = doc.data().lastName;
     
             //console.log(1, firstName, lastName);
+
+            $("#firstName")[0].innerHTML = firstName;
+            $("#lastName")[0].innerHTML = lastName;
         });
     });
 

@@ -53,7 +53,7 @@ $(document).ready(function()
         e.preventDefault();
 
         var firstName = $("#signUpFirstName")[0].value;
-        var lastName = $("#signUpFirstName")[0].value;
+        var lastName = $("#signUpLastName")[0].value;
         var email = $("#signUpEmail")[0].value;
         var pswd = $("#signUpPsw")[0].value;
 
