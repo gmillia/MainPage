@@ -58,6 +58,7 @@ $(document).ready(function()
 
         auth.createUserWithEmailAndPassword(email, pswd).then(function()
         {
+            firebase.auth().currentUser.sendEmailVerification();
             const auth = firebase.auth();
             var data = 
             {
@@ -72,8 +73,6 @@ $(document).ready(function()
                 $("#signUpForm")[0].reset();
                 window.location = 'User/';
             });
-    
-            //console.log(db.collection("Users"));
         })
     });
 

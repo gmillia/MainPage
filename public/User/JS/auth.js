@@ -17,6 +17,7 @@ window.onload = function()
         if(user)
         {
             console.log("Logged in");
+            console.log("Verified: " + user.emailVerified);
 
             //Set session timeout, so the user is logged out automatically after some time
             user.getIdTokenResult().then((idTokenResult)=>
